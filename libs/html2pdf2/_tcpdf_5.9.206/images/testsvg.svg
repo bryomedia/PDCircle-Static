@@ -1,0 +1,30 @@
+<svg width="282" height="278" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <g>
+  <title>Layer 1</title>
+  <image x="3" y="0" width="282" height="278" id="svg_1" xlink:href="http://projects.bryomedia.com/wmec-survey/images/gauge_icon.png"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="Monospace" font-size="24" id="svg_2" y="203" x="143" stroke-width="0" stroke="#000000" fill="#7fff00">49%</text>
+  <text fill="#ffffff" stroke="#000000" stroke-width="0" x="143" y="107" id="svg_3" font-size="24" font-family="Serif" text-anchor="middle" xml:space="preserve" font-weight="bold">TQI 1.0</text>
+  <g transform="rotate(0 143.0000000000001,133.99999999999997) " id="gauge_i">
+   <g fill="#000000" id="g4540">
+    <g fill="#000000" id="g4542">
+     <g fill="#000000" id="g4544">
+      <g fill="#000000" id="g4546">
+       <path fill="#000000" id="path4548" d="m101.98346,109.52347l39.93579,36.65489c0,0 7.51974,-2.20476 8.78778,-3.93312l0,0c1.26851,-1.72931 1.35748,-9.89813 1.35748,-9.89813l0,0l-45.00793,-29.739l-45.00845,-29.73804l39.93533,36.6534z"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g fill="#ffffff" id="g3910">
+    <g fill="#ffffff" id="g3912">
+     <g fill="#ffffff" id="g3918">
+      <g fill="#ffffff" id="g3920">
+       <path fill="#ffffff" d="m101.98346,106.65947l39.93579,36.65489c0,0 7.51974,-2.20476 8.78778,-3.93312l0,0c1.26851,-1.72934 1.35748,-9.89813 1.35748,-9.89813l0,0l-45.00793,-29.739l-45.00845,-29.73804l39.93533,36.6534z" id="path3930"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <path fill="#666666" id="path4729" d="m147.17749,133.68257a2.99571,2.99571 0 1 1-5.99142,0a2.99571,2.99571 0 1 15.99142,0z"/>
+  </g>
+ </g>
+</svg>

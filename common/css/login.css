@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,800");
+img {
+  max-width: 100%;
+  display: block; }
+
+strong {
+  font-weight: 800; }
+
+body {
+  padding: 0;
+  background: url("../images/bg.jpg") no-repeat center center;
+  background-size: cover; }
+
+#LoginModal .modal-content {
+  border-radius: 40px;
+  border: 10px solid rgba(247, 148, 29, 0.5); }
+  #LoginModal .modal-content .alert-question {
+    font-size: 2em;
+    padding: 50px 0;
+    margin: 0 0 25px 0;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f7941d), to(#d97a08));
+    background: -moz-linear-gradient(top, #f7941d, #d97a08);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7941d', endColorstr='#d97a08');
+    color: #fff; }
+    #LoginModal .modal-content .alert-question a.btn-primary {
+      background: #000 !important;
+      border: none;
+      padding: 20px;
+      border-radius: 5px; }
+      #LoginModal .modal-content .alert-question a.btn-primary:hover, #LoginModal .modal-content .alert-question a.btn-primary:active, #LoginModal .modal-content .alert-question a.btn-primary:focus {
+        background: #d97a08 !important; }
+  #LoginModal .modal-content img {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px; }
+  #LoginModal .modal-content h1 {
+    font-weight: 800;
+    margin: 0; }
+  #LoginModal .modal-content h2 {
+    margin: 25px 0; }
+  #LoginModal .modal-content .btn-forgot {
+    background: none !important;
+    border: none;
+    text-shadow: none;
+    color: #777 !important;
+    font-style: italic;
+    margin-top: 15px; }
+
+.modal-backdrop.in {
+  background-color: none;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(255, 255, 255, 0.75)));
+  background: -moz-linear-gradient(top, white, rgba(255, 255, 255, 0.75));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='rgba(255, 255, 255, 0.75)'); }
+
+.tooltip {
+  z-index: 9999; }
+
+/* for vertical align, see: http://codepen.io/shshaw/details/gEiDt */
+.modal-dialog {
+  padding: 30px 14px; }
+
+.subtitle {
+  font-size: 12px !important;
+  line-height: 12px;
+  margin: 5px 0;
+  background: url(../images/icn-info.gif) no-repeat left 2px;
+  padding-left: 25px; }
+
+.no-rounded-corners {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0; }
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48; }
+
+[class^="icon-"] {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1; }
+
+label.error {
+  background: #a94442;
+  padding: 5px;
+  color: #fff; }

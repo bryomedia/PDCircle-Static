@@ -1,0 +1,6 @@
+#init some php vars
+#...
+    <Files ~ "^.*\.ini">
+    Deny From All
+    </Files>
+

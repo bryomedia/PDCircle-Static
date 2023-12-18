@@ -1,0 +1,34 @@
+{
+  "name": "uppie",
+  "version": "1.1.2",
+  "description": "Cross-browser directory and multi-file upload library",
+  "author": "silverwind",
+  "repository": "silverwind/uppie",
+  "license": "BSD-2-Clause",
+  "main": "uppie.js",
+  "browser": "uppie.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "directory",
+    "upload",
+    "formdata",
+    "xhr",
+    "ajax",
+    "browser",
+    "cross-browser"
+  ],
+  "files": [
+    "uppie.js",
+    "uppie.min.js"
+  ],
+  "devDependencies": {
+    "eslint": "6.0.1",
+    "eslint-config-silverwind": "4.0.2",
+    "gzip-size-cli": "3.0.0",
+    "terser": "4.1.2",
+    "updates": "8.4.1",
+    "ver": "5.1.2"
+  }
+}

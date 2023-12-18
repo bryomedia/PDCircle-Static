@@ -1,0 +1,97 @@
+/* overrides + additions */
+
+
+/* BEGIN ACE overrides */
+
+.hidden { display: none !important; }
+.block { display: block !important; width: 100%;  }
+/* color scheme */
+.btn-orange {
+    background-color: #f99d1c !important;
+    border-color: #f99d1c !important;
+}
+.btn-orange:hover, .btn-orange:active {
+    background-color: #d37c02 !important;
+}
+.btn-orange:focus, .btn-orange:focus:active, .btn-orange:active:hover, .btn-orange:focus:hover {
+    background-color: #cc8e35 !important;
+}
+.label-orange {
+    background-color: #f99d1c !important;
+}
+/* end color scheme */
+body {
+	/*overflow: auto;*/ /*test*/
+}
+.sticky-offset { top: 64px; }
+/* new ACE 311*/
+footer a {
+  color: white !important;
+}
+.fc-list-event-title a, .fc-list-event { color: white !important; }
+.strike { text-decoration: line-through !important; }
+/* END ACE overrides */
+
+/* Layout */
+table.center { margin: 0 auto; }
+.column_hover { background-color: #F5F5F5 !important; color: #000 !important; }
+.headercolumn, .listcolumn, .listcolumnedit { font-size: 12px; }
+/*.detailviewtext { margin-top: 4px; font-size: 14px; }*/
+
+/* td_row_style */
+.td_row_style_red { background-color: #FFDBE1; }
+.td_row_style_yellow { background-color: #FFFFBD; }
+.td_row_style_green { background-color: #D4FFD3; }
+
+/* others */
+.sexy-loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff url('../images/sexy-loader.gif') no-repeat center center; opacity: 0.7; z-index: 9999; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; padding-top: 25%; cursor: pointer; }
+
+.dms_version { color: #fff; font-size: 9px; font-weight: bold; right: 20px; bottom: 0; position: absolute !important; }
+
+/* input states */
+input[type=text].loading, input[type=password].loading, select.loading, textarea.loading { background: url("../images/ajax-loader.gif") no-repeat scroll right center #FFFFFF; }
+textarea.loading { background-position: left bottom; }
+select.loading, select.error { padding-right: 20px; /*-webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box;*/ }
+input[type=text].error, input[type=password].error, select.error, textarea.error { background: url("../images/icons/alert_triangle.html") no-repeat scroll right center #FFE6E6; }
+textarea.error { background-position: left bottom; }
+label.error { display: block; /*color: #f00; background: url("../images/alert.png") no-repeat scroll left center transparent; padding-left: 22px;*/ } 
+label.error:before { content: "\f071"; font-family: 'Font Awesome 5 Free' !important; margin-right: 4px; }
+.input-group .btn-group.bootstrap-select .btn, .input-group .datepicker, .input-group .datetimepicker, .input-group .timepicker { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+textarea.autogrow { min-height: 100px; }
+
+/* CSS helpers */
+.cursor-pointer { cursor: pointer; }
+.move-handle { cursor: s-resize; cursor: -webkit-drag;  }
+.no-rounded-corners { -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+.red { color: #f00; }
+.green { color: #007E00; }
+.glow { -webkit-box-shadow:  0px 0px 10px 0px #F9DD34; box-shadow:  0px 0px 10px 0px #F9DD34; outline: 3px solid #F9DD34; }
+.shadow_box { -webkit-box-shadow:  0px 0px 20px  #ddd; box-shadow:  0px 0px 20px #ddd; }
+.highlight { background-color: yellow; }
+.underline-dotted, .underline-dotted-2 { border-bottom: 1px dotted #999; cursor: help; } .underline-dotted:hover, .underline-dotted-2:hover { border: none; }
+.underline-dotted-2 { border-bottom: 2px dotted #999; }
+.ui-sortable .temp * { /*background-color: #2ECC71 !important;*/ height: 50px; }
+.valign-top { vertical-align: top; }
+.valign-middle { vertical-align: middle; }
+
+/* END CSS helpers */
+
+.jsoneditor-contextmenu ul { box-sizing: content-box; -moz-box-sizing: content-box; }
+.jsoneditor-contextmenu ul li button.expand { width: 30px !important; }
+.jsoneditor { border: 1px solid #F2F2F2; }
+table.tree td, table.values td { padding: 0 !important; border-top: 0 !important; overflow: hidden; }
+
+/* these styles must be always at eof */
+label { cursor: pointer; }
+.listview { width: 100%; /*margin-bottom: 10px;*/ }
+/*depr .stepy-2-buttons { margin-top: 20px; }*/
+.tr_hover:hover { background-color: rgb(249,187,85); }
+.tr_hover:hover * { color: #000 !important; }
+/*depr th { padding: 4px; }*/
+.ui-front { z-index: 10000; }
+.ui-datepicker { z-index: 1099 !important; }
+.no-border { border: 0 !important; }
+/* EOF */
+

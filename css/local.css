@@ -1,0 +1,41 @@
+/* styles used in current project only */
+body { /*background: url(../images/bg.jpg) repeat-x center top fixed #0A7096;*/
+}
+
+.mail-templates-preview-div {
+    min-width: 200px;
+    height: auto;
+    max-height: 150px;
+    overflow: hidden;
+    border: none;
+}
+
+/*.mail-templates-preview-div:empty + div + .btn { display: none; }*/
+iframe.mail-templates-preview-div::-webkit-scrollbar {
+    display: none;
+}
+
+.mail-templates-preview-big {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    border: none;
+}
+
+input[type=text].loading, input[type=password].loading, select.loading {
+    background: url("../images/ajax-loader.gif") no-repeat scroll right center #FFFFFF;
+}
+
+/* ace overrides */
+
+.main-container:before {
+    background: none;
+}
+
+.page-content {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+label.error, label.error::before {
+    color: #a94442;
+}

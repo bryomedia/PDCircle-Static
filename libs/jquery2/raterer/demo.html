@@ -1,0 +1,62 @@
+<html><head><title>Raterater Demo</title>
+
+<!-- Thank you Font Awesome for the wonderful star icons -->
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+<!-- We need the raterater stylesheet -->
+<link href="raterater.css" rel="stylesheet"/>
+
+<style>
+/* Override star colors */
+.raterater-bg-layer {
+    color: rgba( 0, 0, 0, 0.25 );
+}
+.raterater-hover-layer {
+    color: rgba( 255, 255, 0, 0.75 );
+}
+.raterater-hover-layer.rated {
+    color: rgba( 255, 255, 0, 1 );
+}
+.raterater-rating-layer {
+    color: rgba( 255, 155, 0, 0.75 );
+}
+.raterater-outline-layer {
+    color: rgba( 0, 0, 0, 0.25 );
+}
+</style>
+
+</head><body>
+
+<!-- Lets add some rating boxes -->
+<div class="ratebox" data-id="1" data-rating="2.2"></div>
+<div class="ratebox" data-id="2" data-rating="3.6"></div>
+
+<!-- We need jquery and raterater.jquery.js -->
+<script src="https://code.jquery.com/jquery-1.4.1.min.js"></script>
+<script src="raterater.jquery.js"></script>
+
+<script>
+
+/* This is out callback function for when a rating is submitted
+ */
+function rateAlert(id, rating)
+{
+    alert( 'Rating for '+id+' is '+rating+' stars!' );
+}
+
+/* Here we initialize raterater on our rating boxes
+ */
+$(function() {
+    $( '.ratebox' ).raterater( { 
+        submitFunction: 'rateAlert', 
+        allowChange: true,
+        starWidth: 100,
+        spaceWidth: 10,
+        numStars: 5
+    } );
+});
+
+</script>
+
+</body>
+</html>

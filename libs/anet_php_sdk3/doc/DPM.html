@@ -1,0 +1,23 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>DPM.markdown</title>
+      </head>
+      <body>
+        <h1 id="direct-post-method">Direct Post Method</h1>
+<h2 id="basic-overview">Basic Overview</h2>
+<p>The Authorize.Net PHP SDK includes a class that demonstrates one way
+of implementing the Direct Post Method.</p>
+<p>While it is not necessary to use the AuthorizeNetDPM class to implement
+DPM, it may serve as a handy reference.</p>
+<p>The AuthorizeNetDPM class extends the AuthorizeNetSIM_Form class.
+See the SIM.markdown for additional documentation.</p>
+<h2 id="relay-response-snippet">Relay Response Snippet</h2>
+<p>The AuthorizeNetDPM class contains a <code>getRelayResponseSnippet($redirect_url)</code>
+which generates a snippet of HTML that will redirect a user back to your
+site after submitting a checkout form using DPM/SIM.</p>
+<p>Use this method(or just grab the html) if you want to create a checkout
+experience where the user only interacts with pages on your site.</p>
+
+      </body>
+    </html>

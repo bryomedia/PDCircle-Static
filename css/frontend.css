@@ -1,0 +1,185 @@
+/* frontend.css, oveerides for BS and ACE */
+.jumbotron {
+    margin-top: 40px;
+}
+
+input[type=text].loading, input[type=password].loading, select.loading {
+    background: url("../images/ajax-loader.gif") no-repeat scroll right center #FFFFFF;
+}
+
+.valign-middle {
+    vertical-align: middle !important;
+}
+
+.sexy-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff url("../images/sexy-loader.gif") no-repeat center center;
+    opacity: 0.7;
+    z-index: 9999;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 25%;
+    cursor: pointer;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #693490 !important;
+    border-color: #693490 !important;
+}
+
+.wizard > .steps .current a, .wizard > .steps .current a:hover, .wizard > .steps .current a:active {
+    background: #f99d1c;
+    color: #fff;
+    cursor: default;
+}
+
+.wizard > .steps .disabled a, .wizard > .steps .disabled a:hover, .wizard > .steps .disabled a:active {
+    background: #eee;
+    color: #aaa;
+    cursor: default;
+}
+
+.skin-3 .navbar {
+    background-color: #f99d1c;
+}
+
+nav.navbar a.navbar-brand img {
+    max-width: 260px;
+}
+
+nav.navbar .navbar-collapse a {
+    color: #000000;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.card-search-bar .search-bar-wrapper {
+    position: relative;
+}
+
+.card-search-bar .search-bar-wrapper i.fa-search {
+    position: absolute;
+    top: 13px;
+    left: 10px;
+}
+
+.card-search-bar .search-bar-wrapper a#clear-search {
+    position: absolute;
+    right: 10px;
+    top: 2px;
+}
+
+footer.footer .footer-inner.bgc-blue {
+    background-color: #04133e !important;
+}
+
+/**
+ *
+ * UI fixes/updates per WMEC request 8/11/2020
+ *
+ */
+.wizard > .content > .body label.error {
+    margin: 0 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 5px;
+}
+
+.btn-orange {
+    background-color: #f99d1c !important;
+    border-color: #f99d1c !important;
+}
+
+.btn-orange:hover, .btn-orange:active {
+    background-color: #d37c02 !important;
+}
+
+.btn-orange:focus, .btn-orange:focus:active, .btn-orange:active:hover, .btn-orange:focus:hover {
+    background-color: #cc8e35 !important;
+}
+
+.label-orange {
+    background-color: #f99d1c !important;
+}
+
+div#home a.card-home {
+    position: relative;
+    text-decoration: none;
+    z-index: 100;
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+}
+
+div#home a.card-home img {
+    z-index: 110;
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+}
+
+div#home a.card-home p {
+    position: absolute;
+    padding: 0 25px;
+    top: 50%;
+    left: 50%;
+    margin-left: -50%;
+    margin-top: -15%;
+    z-index: 100;
+}
+
+div#home a.card-home .card-body {
+    background: #fff;
+}
+
+div#home a.card-home:hover {
+    border-color: #f6931c;
+    background: #000;
+    z-index: 110;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+div#home a.card-home:hover img {
+    opacity: 0.25;
+    z-index: 100;
+}
+
+div#home a.card-home:hover p {
+    z-index: 110;
+}
+
+.footer {
+    height: inherit;
+}
+
+@media (min-width: 768px) {
+    nav.navbar a.navbar-brand img {
+        max-width: inherit;
+    }
+}
+
+@media (min-width: 992px) {
+    nav.navbar > .navbar-inner {
+        background: -webkit-linear-gradient(315deg, #fff 45%, #04133e);
+        background: -o-linear-gradient(315deg, #fff 45%, #04133e);
+        background: linear-gradient(135deg, #fff 45%, #04133e);
+    }
+
+    nav.navbar > .navbar-inner .navbar-collapse a {
+        color: #fff;
+    }
+}
