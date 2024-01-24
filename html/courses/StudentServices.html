@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<head>
+    <meta charset="utf-8">
+    <title>West-MEC PD Circle PD Circle</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../libs/ace_311/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <link href="../../libs/jqueryui_1_12/jquery-ui.min.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/@fortawesome/fontawesome-free/css/fontawesome.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/@fortawesome/fontawesome-free/css/solid.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/@fortawesome/fontawesome-free/css/brands.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/chosen-js/chosen.css" rel="stylesheet">
+
+    <link href="../../libs/ace_dmx/pnotify2/PNotify.css" rel="stylesheet">
+
+    <link href="../../libs/ace_dmx/pnotify2/PNotifyBootstrap4.css" rel="stylesheet">
+
+    <link href="../../libs/ace_dmx/pnotify2/PNotifyMobile.css" rel="stylesheet">
+
+    <link href="../../libs/ace_dmx/css/jquery.floatingscroll.css" rel="stylesheet">
+
+    <link href="../../common/css/jquery.steps.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css"
+          rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/dropzone/dist/dropzone.css" rel="stylesheet">
+
+    <link href="../../common/css/dropzone.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/tiny-date-picker/tiny-date-picker.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/dist/css/ace-font.css" rel="stylesheet">
+
+    <script src="../../libs/ace_311/node_modules/jquery/dist/jquery.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/popper.js/dist/umd/popper.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="../../libs/jqueryui_1_12/jquery-ui.min.js"></script>
+
+    <script src="../../libs/ace_dmx/momentjs/moment-with-locales.min.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotify.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyBootstrap4.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyAnimate.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyFontAwesome5.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyFontAwesome5Fix.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyMobile.js"></script>
+
+    <script src="../../libs/ace_dmx/js/jquery.floatingscroll.es6.min.js"></script>
+
+    <script src="../../libs/common_scripts.min.js"></script>
+
+    <script src="../../libs/jquery2/jquery.highlight-3.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/jquery-validation/dist/additional-methods.js"></script>
+
+    <script src="../../libs/ace/dist/js/jquery.maskedinput.min.js"></script>
+
+    <script src="../../libs/jquery2/jquery-steps/jquery.steps.min.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/chosen-js/chosen.jquery.js"></script>
+
+    <script src="../../libs/jquery2/jquery.printElement.min.js"></script>
+
+    <script src="../../libs/ace/assets/js/ajaxfileupload.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/dropzone/dist/dropzone.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/tiny-date-picker/dist/date-range-picker.js"></script>
+
+    <script src="../../libs/ace/dist/js/inputmask/jquery.inputmask.min.js"></script>
+
+    <script src="../../libs/ace/dist/js/inputmask/inputmask.binding.js"></script>
+
+    <script src="../../libs/ace_311/dist/js/ace.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/chart.js/dist/Chart.js"></script>
+
+    <script src="../../libs/jquery2/cookie/js.cookie.min.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js"></script>
+
+    <link href="../../libs/ace_311/node_modules/tiny-date-picker/date-range-picker.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/dist/css/ace.css" rel="stylesheet">
+
+    <script>
+        var beforeload = (new Date()).getTime();
+        var successMessage = [];
+        var infoMessage = [];
+        var errorMessage = [];
+        var warningMessage = [];
+        var SITE_URL = "../../index.html";
+        var LIBS_URL = "/libs/";
+        var REQUEST_URI = "/courses/StudentServices";
+        var secureUri = false;
+        var fieldErrors = {};
+        var footerHeight = 0;
+
+        var is_IE = false;
+        var listviewBottomSpace = null;
+        var tempObj = {};
+        Dropzone.autoDiscover = false;
+        var printElementCSS = ['/libs/ace/dist/css/bootstrap.min.css', '/libs/ace/dist/css/ace.min.css', '/libs/ace/dist/css/ace-fonts.css', '/libs/ace/dist/css/font-awesome.min.css'];
+
+        PNotify.defaultModules.set(PNotifyBootstrap4, {});
+        // PNotify.defaultModules.set(PNotifyFontAwesome5, {});
+        PNotify.defaults.addClass = '';
+        PNotify.defaults.closerHover = true;
+    </script>
+
+
+    <link href="../../common/css/main.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+    <link href="../../css/frontend.css" rel="stylesheet">
+
+</head>
+<body class="">
+
+<div class="body-container">
+
+    <nav class="navbar navbar-sm navbar-expand-lg navbar-fixed -navbar-blue bgc-white">
+        <div class="navbar-inner brc-grey-l2 flex-wrap shadow-md">
+
+            <div class="d-flex h-100 align-items-center justify-content-xl-between">
+                <a class="navbar-brand ml-2 -text-white" href="../../index.html">
+                    <img src="../../images/logo_pdf3.png"/>
+                </a>
+            </div>
+
+            <!-- .navbar-menu toggler -->
+            <button class="navbar-toggler mx-1 p-25" type="button" data-toggle="collapse" data-target="#navbarMenu"
+                    aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+                <i class="fa fa-bars -text-white"></i>
+            </button>
+
+
+            <div class="ml-auto mr-lg-2 navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu">
+                <div class="navbar-nav">
+                    <ul class="nav nav-compact-2 justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="search.html">
+                                Search For Class
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="calendar.html">
+                                Calendar View
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="../../html/hotel.html">
+                                Hotel
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="../../html/contact.html">
+                                Contact
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="../../html/admin.html">
+                                Login
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div><!-- .navbar-menu -->
+
+
+        </div><!-- .navbar-inner -->
+    </nav>
+    <div class="main-container bgc-white" id="main-container">
+
+        <div class="main-content"><!-- new, moved from page content to also wrap the footer -->
+
+
+            <div role="main" class="page-content container container-plus">
+
+                <div class="page-header mb-0 pb-2 pos-rel">
+                    <h1 class="page-title text-primary-d2">
+                        Registration
+                    </h1>
+                    <div class="page-tools d-flex align-items-end btn-group">
+                        <button type="button"
+                                class="btn px-25 py-2 text-95 btn-text-info btn-lighter-default btn-h-lighter-info -btn-a-lighter-info dropdown-toggle border-b-2"
+                                data-display="static" data-toggle="collapse" data-target="#quicksearch"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            <i class="fa fa-search text-110"></i>
+                        </button>
+                    </div>
+                </div>
+                <hr class="border-solid brc-primary-m4 mt-0 mb-2">
+
+                <div class="card acard">
+
+                    <div class="sexy-loader text-center" id="listview-loader"
+                         style="display: none; position: absolute;"><img
+                            src="../../images/please_wait_text.gif">
+                        <h4>Please be patient while the page is loading.</h4>
+                    </div>
+
+                    <div class="row -card -bgc-blue-l1 collapse " id="quicksearch">
+                        <div class="col-12 col-sm-12 col-md-10 offset-md-1">
+                            <i class="fa fa-search -text-white text-105 mr-n45"></i>
+                            <input type="text"
+                                   class="input-lg w-100 pr-5 pl-475 py-2 radius-1 autofocus border-1 btn-outline-grey btn-h-outline-blue btn-a-outline-blue -bgc-white -text-white"
+                                   name="search" id="search" placeholder="Type something to search ..."
+                                   aria-label="Search">
+                            <a href="#" id="clear-search"
+                               class="btn btn-sm border-0 btn-white btn-h-danger btn-a-light-orange text-125 ml-n5 no-underline radius-1 d-style">
+                                <i class="fa fa-times text-105 w-3"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body" id="listview-view">
+                        <h3>Student Services</h3>
+                        <p></p>
+
+
+                        <div class="page-toolbar text-right">
+
+            <span class="toolbartext number-of-pages">
+                Page: <b><input type="text"
+                                class="current-page-number novalidate border-0 text-right font-weight-bold" readonly
+                                name="PageNo" value="1" style="width: 30px;"></b> of <b>1</b>
+            </span>
+                            /
+                            <span class="number-of-entries toolbartext">
+                Courses: <b>1</b> &minus;
+                <b>5</b>
+                of <b>5</b>
+            </span>
+
+                        </div>
+
+
+                        <div
+                                class="d-style bgc-white btn-outline-lightgrey btn-h-outline-blue btn-a-outline-blue w-100 my-3 p-3 shadow-sm text-left pos-rel
+                   border-2  
+                  ">
+                <span
+                        class="badge bgc-grey-l1 -text-white badge-sm position-tl m-n2 badge-pill text-70 border-1 brc-black-tp8">
+                    1
+                </span>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="pt-0 text-170 text-600 text-primary-d1 letter-spacing">
+                                        Everything To Gain: Supporting Postsecondary Attainment </h4>
+                                    <div class="-col-12 text-secondary-d1 text-120 mb-2">
+                                        Dr. Jennifer Murphy, Sr. Director for Attainment, Education Forward AZ, will
+                                        present this groundbreaking report and statewide campaign to increase degree and
+                                        certificate attainment as an Arizona statewide imperative. The data is clear:
+                                        Everything to Gain reveals that Arizonans who pursue postsecond...
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                                                                                          <span class="badge mr-1 pos-rel border-2 pr-3 bgc-white brc-blue-m1 text-dark-tp3 bgc-h-blue-l4 mt-3 radius-round overflow-hidden text-95">
+                <a data-rel="tooltip" title="Click to see instructor profile" target="_blank"
+                   href="../../html/instructors/54.html">
+                                      <img alt="User avatar"
+                                           src="../../uploaded/tn_230809133122_jennifer-murphy-headshot-240x300.jpg"
+                                           class="border-1 brc-white-tp3 w-5 h-5 radius-round mr-1">
+                                    Dr. Jennifer Murphy
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12">
+                            <span class="badge badge-info mb-1"><i class="fa fa-list-alt"></i>
+                                Category:
+                            </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                <a data-rel="tooltip" title="Click to see all courses this in this category" target="_blank"
+                   href="StudentServices.html">
+                  Student Services
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                        <span class="badge badge-info mb-1"><i class="fa fa-calendar"></i> When: </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                  1/17/2024 <i class='fa fa-clock'></i> 8:30 AM &minus; 10:00 AM
+                                  </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fa fa-map-marker"></i> Where: </span>
+                                        <span class="badge bgc-white border-2 brc-orange text-dark-tp3 px-3 bgc-h-orange-l3"
+                                              data-rel="tooltip" title="5405 N. 99th Avenue, Glendale, AZ 85305">
+                                <a
+                                        href="https://goo.gl/maps/L7whpfzjWnuQwTko6"
+                                        target="_blank">START @ West-MEC - Glendale, AZ</a>                            </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fas fa-dollar-sign"></i> Cost:</span>
+                                        <span class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">$0.00</span>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card-footer text-right">
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <a href="../../html/course/view/395.html" class="btn btn-blue" title="View details">View
+                                            Details</a>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                                class="d-style bgc-white btn-outline-lightgrey btn-h-outline-blue btn-a-outline-blue w-100 my-3 p-3 shadow-sm text-left pos-rel
+                   border-2  
+                  ">
+                <span
+                        class="badge bgc-grey-l1 -text-white badge-sm position-tl m-n2 badge-pill text-70 border-1 brc-black-tp8">
+                    2
+                </span>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="pt-0 text-170 text-600 text-primary-d1 letter-spacing">
+                                        High Opportunity Programs At Central Campus </h4>
+                                    <div class="-col-12 text-secondary-d1 text-120 mb-2">
+                                        Do you have a student who is still looking for that niche opportunity, but you
+                                        aren&rsquo;t quite sure where to direct them? This is the professional
+                                        development opportunity for you. Come see our 1-Year Drone Program for Seniors
+                                        and our 2 Year Precision Machining Program for Juniors!
+                                        This course...
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                                                                                          <span class="badge mr-1 pos-rel border-2 pr-3 bgc-white brc-blue-m1 text-dark-tp3 bgc-h-blue-l4 mt-3 radius-round overflow-hidden text-95">
+                <a data-rel="tooltip" title="Click to see instructor profile" target="_blank"
+                   href="../../html/instructors/32.html">
+                                      <img alt="User avatar"
+                                           src="../../uploaded/tn_221209125406_joely_sanders_counselor.png"
+                                           class="border-1 brc-white-tp3 w-5 h-5 radius-round mr-1">
+                                    Joely Sanders
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12">
+                            <span class="badge badge-info mb-1"><i class="fa fa-list-alt"></i>
+                                Category:
+                            </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                <a data-rel="tooltip" title="Click to see all courses this in this category" target="_blank"
+                   href="StudentServices.html">
+                  Student Services
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                        <span class="badge badge-info mb-1"><i class="fa fa-calendar"></i> When: </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                  2/27/2024 <i class='fa fa-clock'></i> 1:30 PM &minus; 2:30 PM
+                                  </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fa fa-map-marker"></i> Where: </span>
+                                        <span class="badge bgc-white border-2 brc-orange text-dark-tp3 px-3 bgc-h-orange-l3"
+                                              data-rel="tooltip" title="6997 N Glen Harbor Blvd, Glendale, AZ 85307">
+                                West-MEC Central Campus
+                                                            </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fas fa-dollar-sign"></i> Cost:</span>
+                                        <span class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">$0.00</span>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card-footer text-right">
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <a href="../../html/course/view/400.html" class="btn btn-blue" title="View details">View
+                                            Details</a>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                                class="d-style bgc-white btn-outline-lightgrey btn-h-outline-blue btn-a-outline-blue w-100 my-3 p-3 shadow-sm text-left pos-rel
+                   border-2  
+                  ">
+                <span
+                        class="badge bgc-grey-l1 -text-white badge-sm position-tl m-n2 badge-pill text-70 border-1 brc-black-tp8">
+                    3
+                </span>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="pt-0 text-170 text-600 text-primary-d1 letter-spacing">
+                                        High Opportunity Programs At Northwest Campus </h4>
+                                    <div class="-col-12 text-secondary-d1 text-120 mb-2">
+                                        Come out to see the Northwest Campus in Surprise to explore innovative
+                                        opportunities that exist for your students! Do you have a student who is still
+                                        looking for that niche opportunity, but you aren&rsquo;t quite sure where to
+                                        direct them? This is the professional development opportunity for you.
+                                        ...
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                                                                                          <span class="badge mr-1 pos-rel border-2 pr-3 bgc-white brc-blue-m1 text-dark-tp3 bgc-h-blue-l4 mt-3 radius-round overflow-hidden text-95">
+                <a data-rel="tooltip" title="Click to see instructor profile" target="_blank"
+                   href="../../html/instructors/34.html">
+                                      <img alt="User avatar"
+                                           src="../../uploaded/tn_220906124300_bobby_vernier_counselor.jpg"
+                                           class="border-1 brc-white-tp3 w-5 h-5 radius-round mr-1">
+                                    Robert Vernier
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12">
+                            <span class="badge badge-info mb-1"><i class="fa fa-list-alt"></i>
+                                Category:
+                            </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                <a data-rel="tooltip" title="Click to see all courses this in this category" target="_blank"
+                   href="StudentServices.html">
+                  Student Services
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                        <span class="badge badge-info mb-1"><i class="fa fa-calendar"></i> When: </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                  2/29/2024 <i class='fa fa-clock'></i> 2:00 PM &minus; 3:30 PM
+                                  </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fa fa-map-marker"></i> Where: </span>
+                                        <span class="badge bgc-white border-2 brc-orange text-dark-tp3 px-3 bgc-h-orange-l3"
+                                              data-rel="tooltip" title="13201 W Grand Ave, Surprise, AZ 85374">
+                                West-MEC Northwest Campus
+                                                            </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fas fa-dollar-sign"></i> Cost:</span>
+                                        <span class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">$0.00</span>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card-footer text-right">
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <a href="../../html/course/view/396.html" class="btn btn-blue" title="View details">View
+                                            Details</a>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                                class="d-style bgc-white btn-outline-lightgrey btn-h-outline-blue btn-a-outline-blue w-100 my-3 p-3 shadow-sm text-left pos-rel
+                   border-2  
+                  ">
+                <span
+                        class="badge bgc-grey-l1 -text-white badge-sm position-tl m-n2 badge-pill text-70 border-1 brc-black-tp8">
+                    4
+                </span>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="pt-0 text-170 text-600 text-primary-d1 letter-spacing">
+                                        More Than Sad: Suicide Awareness Training </h4>
+                                    <div class="-col-12 text-secondary-d1 text-120 mb-2">
+                                        In an American Foundation for Suicide Prevention 2020 report, suicide is
+                                        identified as the 2nd leading cause of death for Arizona's adolescents and young
+                                        adults (ages 10-34). In fact, on average, one person dies by suicide every six
+                                        hours in our state.
+                                        As an intervention to reduce the suicide ra...
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                                                                                          <span class="badge mr-1 pos-rel border-2 pr-3 bgc-white brc-blue-m1 text-dark-tp3 bgc-h-blue-l4 mt-3 radius-round overflow-hidden text-95">
+                <a data-rel="tooltip" title="Click to see instructor profile" target="_blank"
+                   href="../../html/instructors/3.html">
+                                      <img alt="User avatar"
+                                           src="../../uploaded/tn_220906123401_shelly_thome_ess_director.jpg"
+                                           class="border-1 brc-white-tp3 w-5 h-5 radius-round mr-1">
+                                    Shelly Thome
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12">
+                            <span class="badge badge-info mb-1"><i class="fa fa-list-alt"></i>
+                                Categories:
+                            </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                <a data-rel="tooltip" title="Click to see all courses this in this category" target="_blank"
+                   href="WMyou.html">
+                  West-MECyou
+                </a>
+              </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                <a data-rel="tooltip" title="Click to see all courses this in this category" target="_blank"
+                   href="StudentServices.html">
+                  Student Services
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                        <span class="badge badge-info mb-1"><i class="fa fa-calendar"></i> When: </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                  3/1/2024 <i class='fa fa-clock'></i> 12:30 PM &minus; 3:30 PM
+                                  </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fa fa-map-marker"></i> Where: </span>
+                                        <span class="badge bgc-white border-2 brc-orange text-dark-tp3 px-3 bgc-h-orange-l3"
+                                              data-rel="tooltip" title="5487 N. 99th Avenue, Glendale, AZ 85305">
+                                <a
+                                        href="https://goo.gl/maps/D8XCU9WRiSh85YLL9"
+                                        target="_blank">West-MEC - District Office</a>                            </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fas fa-dollar-sign"></i> Cost:</span>
+                                        <span class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">$0.00</span>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card-footer text-right">
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <a href="../../html/course/view/379.html" class="btn btn-blue" title="View details">View
+                                            Details</a>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                                class="d-style bgc-white btn-outline-lightgrey btn-h-outline-blue btn-a-outline-blue w-100 my-3 p-3 shadow-sm text-left pos-rel
+                   border-2  
+                  ">
+                <span
+                        class="badge bgc-grey-l1 -text-white badge-sm position-tl m-n2 badge-pill text-70 border-1 brc-black-tp8">
+                    5
+                </span>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="pt-0 text-170 text-600 text-primary-d1 letter-spacing">
+                                        Charter/Private School High Opportunity Program Showcase & Luncheon </h4>
+                                    <div class="-col-12 text-secondary-d1 text-120 mb-2">
+                                        West-MEC Student Services is excited to provide lunch and spend time with
+                                        Charter and Private School Counselors/Advisors that work with West-MEC Central
+                                        Programs. Our afternoon will include conversations about 24-25 class openings in
+                                        High Opportunity Programs, the late application process, knowledg...
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                                                                                          <span class="badge mr-1 pos-rel border-2 pr-3 bgc-white brc-blue-m1 text-dark-tp3 bgc-h-blue-l4 mt-3 radius-round overflow-hidden text-95">
+                <a data-rel="tooltip" title="Click to see instructor profile" target="_blank"
+                   href="../../html/instructors/27.html">
+                                      <img alt="User avatar"
+                                           src="../../uploaded/tn_220906123047_marilynn_babyar_student_services_director.jpg"
+                                           class="border-1 brc-white-tp3 w-5 h-5 radius-round mr-1">
+                                    Marilynn Babyar
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12">
+                            <span class="badge badge-info mb-1"><i class="fa fa-list-alt"></i>
+                                Category:
+                            </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                <a data-rel="tooltip" title="Click to see all courses this in this category" target="_blank"
+                   href="StudentServices.html">
+                  Student Services
+                </a>
+              </span>
+                                    </div>
+
+                                    <div class="-col-12 mb-3">
+                                        <span class="badge badge-info mb-1"><i class="fa fa-calendar"></i> When: </span>
+                                        <span data-rel="no_tooltip" title=""
+                                              class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">
+                  4/5/2024 <i class='fa fa-clock'></i> 12:00 PM &minus; 2:00 PM
+                                  </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fa fa-map-marker"></i> Where: </span>
+                                        <span class="badge bgc-white border-2 brc-orange text-dark-tp3 px-3 bgc-h-orange-l3"
+                                              data-rel="tooltip" title="5405 N. 99th Avenue, Glendale, AZ 85305">
+                                <a
+                                        href="https://goo.gl/maps/L7whpfzjWnuQwTko6"
+                                        target="_blank">START @ West-MEC - Glendale, AZ</a>                            </span>
+
+                                        <br/>
+
+                                        <span class="badge badge-info"><i class="fas fa-dollar-sign"></i> Cost:</span>
+                                        <span class="badge bgc-white border-2 brc-green text-dark-tp3 px-3 bgc-h-green-l3 d-style">$0.00</span>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card-footer text-right">
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        <a href="../../html/course/view/398.html" class="btn btn-blue" title="View details">View
+                                            Details</a>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div><!-- /.card-body -->
+                </div><!-- /.card .acard -->
+
+            </div>
+            <script>
+                var baseURL = '/StudentServices.html?Page=DMS&amp;dms_page=load-courses&amp;Mode=list&amp;ParentKey=StudentServices';
+
+                function reloadThisData(pass_add) {
+                    // $("#refresh-datagrid i").addClass('fa-spin');
+                    $("#listview-loader").show();
+                    var ppcol = "per_page";
+                    var ppgnocol = "PageNo";
+                    var pass = new Object();
+                    pass["per_page"] = $("select[name=per_page]").val();
+                    pass["PageNo"] = $("input[name=PageNo]").val();
+                    if (pass_add != null)
+                        $.each(pass_add, function (k, v) {
+                            pass[k] = v;
+                        });
+                    //search
+                    if ($("#search").val() != '') {
+                        pass['search'] = $("#search").val();
+                    }
+
+                    $.ajax({
+                        type: "post",
+                        url: baseURL + "&ajax_return=load_data",
+                        data: pass,
+                        success: function (response) {
+                            $("#listview-view").html(response);
+
+                            if ($("#search").val() == "") {
+                                $("#listview-view").effect("highlight", {}, 500, function () {
+                                });
+                            } else {
+                                $('#listview-view').highlight($("#search").val());
+                            }
+                            $("#listview-loader").fadeOut('fast');
+                            // $("#refresh-datagrid i").removeClass('fa-spin');
+                            reInit();
+                        }
+                    });
+                }
+
+                $(document).ready(function () {
+
+                    $("#listview-view").on('click', '.page-navigation-button', function () {
+                        page = $(this).data('set-page-no');
+                        // console.log(page);
+                        $(".page-navigation-button").switchClass('btn-primary', 'btn-light');
+                        //$(this).switchClass('btn-light', 'btn-primary');
+                        $(".page-navigation-button.set-page-" + page).switchClass('btn-light', 'btn-primary');
+                        $(".current-page-number").val(page);
+                        reloadThisData();
+                    });
+
+                    $("#search").on('keyup', function () {
+                        reloadThisData();
+                    });
+                    $("#clear-search").on('click', function () {
+                        $("#search").val('');
+                        reloadThisData();
+                    });
+
+
+                });
+            </script>
+
+            <footer class="footer">
+                <div class="footer-inner text-left bgc-blue">
+                    <!-- #section:basics/footer -->
+                    <div class="container container-plus">
+                        <div class="row pt-5 pb-3 border-none brc-grey-l2 text-white">
+                            <div class="col-12">
+                                <p>Contact</p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p>
+                                    -<br/>
+                                    Western Maricopa Education Center #402<br/>
+                                    Professional Development Department<br/>
+                                    5405 North 99th Avenue<br/>
+                                    Glendale, AZ 85305<br/>
+                                    623-738-0023<br/>
+                                    pd@west-mec.org
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p>
+                                    Director of Professional Development and Strategic Planning<br/>
+                                    -<br/>
+                                    -<br/>
+                                    Joel Wakefield<br/>
+                                    623-738-0010<br/>
+                                    joel.wakefield@west-mec.org</p>
+                            </div>
+                        </div>
+
+                        <div class="row pb-5 border-none brc-grey-12 text-white">
+                            <div class="col-12">
+                                <p class="text-warning">
+                                    Copyright © 2022 All Rights Reserved
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /section:basics/footer -->
+                </div>
+            </footer>
+
+
+        </div>
+
+        <form name="tempform" id="tempform" method="post" action="#">
+            <input type="hidden" name="return_url" value="/html/courses/StudentServices">
+            <input type="hidden" name="submit_update_3" value="Save">
+            <div class="modal fade" id="temp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true" data-backdrop="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="temp-modal-title">Title</h4>
+                        </div>
+                        <div class="modal-body">
+                            Content
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary submit-button"
+                                    onclick=" document.tempform.submit();">Submit
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <script type="text/javascript" src="../../common/js/page_init.js"></script>
+        <script type="text/javascript" src="../../common/js/cfunctions.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+
+                if (successMessage.length !== 0)
+                    showMessages("success", successMessage);
+                if (infoMessage.length !== 0)
+                    showMessages("info", infoMessage);
+                if (errorMessage.length !== 0)
+                    showMessages("error", errorMessage);
+                if (warningMessage.length !== 0)
+                    showMessages("warning", warningMessage);
+
+                $('.logout-button').click(function () {
+                    $('#temp-modal #temp-modal-title').html("Logging out...");
+                    $('#temp-modal .modal-body').html("<h4>Goodbye,<br>See you soon!</h4>");
+                    $('#temp-modal .modal-footer').hide();
+                    $('#temp-modal').modal();
+                    $('.sexy-loader').hide();
+                });
+
+                var t = setTimeout(function () {
+                    $(".ui-pnotify-history-container").hide();
+                }, 100);
+
+                $("body").addClass('is-document-loaded');
+
+
+            });
+        </script>
+
+
+    </div><!-- /.main-container -->
+
+</div><!-- /.body-container -->
+
+</body>
+
+</html>
+         

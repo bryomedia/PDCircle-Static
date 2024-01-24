@@ -1,0 +1,156 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>AIM.markdown</title>
+      </head>
+      <body>
+        <h1 id="advanced-integration-method">Advanced Integration Method</h1>
+<h2 id="basic-overview">Basic Overview</h2>
+<p>The AuthorizeNetAIM class creates a request object for submitting transactions
+to the AuthorizeNetAIM API. To use, create an instance of the class, set the fields
+for your transaction, call the method you want to use (Authorize Only, Authorize &amp; 
+Capture, etc.) and you&#39;ll receive an AuthorizeNetAIM response object providing easy access
+to the results of the transaction.</p>
+<h2 id="autoloading">Autoloading</h2>
+<pre><code class="lang-PHP">require &#39;vendor/autoload.php&#39;; 
+</code></pre>
+<h2 id="setting-merchant-credentials">Setting Merchant Credentials</h2>
+<p>The easiest way to set credentials is to define constants which the SDK uses:</p>
+<pre><code class="lang-PHP">define(&quot;AUTHORIZENET_API_LOGIN_ID&quot;, &quot;YOURLOGIN&quot;);
+define(&quot;AUTHORIZENET_TRANSACTION_KEY&quot;, &quot;YOURKEY&quot;);
+</code></pre>
+<p>You can also set credentials manually per request like so:</p>
+<pre><code class="lang-PHP">$sale = new AuthorizeNetAIM(&quot;YOUR_API_LOGIN_ID&quot;,&quot;YOUR_TRANSACTION_KEY&quot;);
+</code></pre>
+<h2 id="setting-the-transaction-post-location">Setting the Transaction Post Location</h2>
+<p>To post transactions to the live Authorize.Net gateway:</p>
+<pre><code class="lang-PHP">define(&quot;AUTHORIZENET_SANDBOX&quot;, false);
+</code></pre>
+<p>To post transactions to the Authorize.Net test server:</p>
+<pre><code class="lang-PHP">define(&quot;AUTHORIZENET_SANDBOX&quot;, true);
+</code></pre>
+<p>You can also set the location manually per request:</p>
+<pre><code class="lang-PHP">$sale-&gt;setSandbox(false);
+</code></pre>
+<h2 id="setting-fields">Setting Fields</h2>
+<p>An Authorize.Net AIM request is simply a set of name/value pairs. The PHP SDK
+allows you to set these fields in a few different ways depending on your
+preference.</p>
+<p>Note: to make things easier on the developer, the &quot;x_&quot; prefix attached to each
+field in the AIM API has been removed. Thus, instead of setting <code>$sale-&gt;x_card_num</code>,
+set <code>$sale-&gt;card_num</code> instead.</p>
+<p>1.) By Setting Fields Directly:</p>
+<pre><code class="lang-PHP">$sale = new AuthorizeNetAIM;
+$sale-&gt;amount = &quot;1999.99&quot;;
+$sale-&gt;card_num = &#39;6011000000000012&#39;;
+$sale-&gt;exp_date = &#39;04/15&#39;;
+$response = $sale-&gt;authorizeAndCapture();
+</code></pre>
+<p>2.) By Setting Multiple Fields at Once:</p>
+<pre><code class="lang-PHP">$sale = new AuthorizeNetAIM;
+$sale-&gt;setFields(
+    array(
+    &#39;amount&#39; =&gt; rand(1, 1000),
+    &#39;card_num&#39; =&gt; &#39;6011000000000012&#39;,
+    &#39;exp_date&#39; =&gt; &#39;0415&#39;
+    )
+);
+</code></pre>
+<p>3.) By Setting Special Items</p>
+<p>To add line items or set custom fields use the respective functions:</p>
+<p>Line Items:</p>
+<pre><code class="lang-PHP">$sale-&gt;addLineItem(
+  &#39;item1&#39;, // Item Id
+  &#39;Golf tees&#39;, // Item Name
+  &#39;Blue tees&#39;, // Item Description
+  &#39;2&#39;, // Item Quantity
+  &#39;5.00&#39;, // Item Unit Price
+  &#39;N&#39; // Item taxable
+  );
+</code></pre>
+<p>Custom Fields:</p>
+<pre><code class="lang-PHP">$sale-&gt;setCustomField(&quot;coupon_code&quot;, &quot;SAVE2011&quot;);
+</code></pre>
+<p>4.) By Passing in Objects</p>
+<p>Each property will be copied from the object to the AIM request.</p>
+<pre><code class="lang-PHP">$sale = new AuthorizeNetAIM;
+$customer = (object)array();
+$customer-&gt;first_name = &quot;Jane&quot;;
+$customer-&gt;last_name = &quot;Smith&quot;;
+$customer-&gt;company = &quot;Jane Smith Enterprises Inc.&quot;;
+$customer-&gt;address = &quot;20 Main Street&quot;;
+$customer-&gt;city = &quot;San Francisco&quot;;
+$customer-&gt;state = &quot;CA&quot;;
+$customer-&gt;zip = &quot;94110&quot;;
+$customer-&gt;country = &quot;US&quot;;
+$customer-&gt;phone = &quot;415-555-5557&quot;;
+$customer-&gt;fax = &quot;415-555-5556&quot;;
+$customer-&gt;email = &quot;foo@example.com&quot;;
+$customer-&gt;cust_id = &quot;55&quot;;
+$customer-&gt;customer_ip = &quot;98.5.5.5&quot;;
+$sale-&gt;setFields($customer);
+</code></pre>
+<h2 id="submitting-transactions">Submitting Transactions</h2>
+<p>To submit a transaction call one of the 7 methods: </p>
+<pre><code class="lang-PHP">AuthorizeNetAIM::authorizeAndCapture()
+AuthorizeNetAIM::authorizeOnly()
+AuthorizeNetAIM::priorAuthCapture()
+AuthorizeNetAIM::void()
+AuthorizeNetAIM::captureOnly()
+AuthorizeNetAIM::credit()
+</code></pre>
+<p>Each method has optional parameters which highlight the fields required by the
+Authorize.Net API for that transaction type.</p>
+<h2 id="echeck">eCheck</h2>
+<p>To submit an electronic check transaction you can set the required fields individually
+or simply use the setECheck method:</p>
+<pre><code class="lang-PHP">$sale = new AuthorizeNetAIM;
+$sale-&gt;amount = &quot;45.00&quot;;
+$sale-&gt;setECheck(
+  &#39;121042882&#39;, // bank_aba_code
+  &#39;123456789123&#39;, // bank_acct_num
+  &#39;CHECKING&#39;, // bank_acct_type
+  &#39;Bank of Earth&#39;, // bank_name
+  &#39;Jane Doe&#39;, // bank_acct_name
+  &#39;WEB&#39; // echeck_type
+);
+$response  = $sale-&gt;authorizeAndCapture();
+</code></pre>
+<h2 id="partial-authorization-transactions">Partial Authorization Transactions</h2>
+<p>To enable partial authorization transactions set the partial_auth flag
+to true:</p>
+<pre><code class="lang-PHP">$sale-&gt;allow_partial_auth = true;
+</code></pre>
+<p>You should receive a split tender id in the response if a partial auth
+is made:</p>
+<pre><code class="lang-PHP">$split_tender_id = $response-&gt;split_tender_id;
+</code></pre>
+<h2 id="itemized-order-information">Itemized Order Information</h2>
+<p>To add itemized order information use the addLineItem method:</p>
+<pre><code class="lang-PHP">$auth-&gt;addLineItem(
+  &#39;item1&#39;, // Item Id
+  &#39;Golf tees&#39;, // Item Name
+  &#39;Blue tees&#39;, // Item Description
+  &#39;2&#39;, // Item Quantity
+  &#39;5.00&#39;, // Item Unit Price
+  &#39;N&#39; // Item taxable
+  );
+</code></pre>
+<h2 id="merchant-defined-fields">Merchant Defined Fields</h2>
+<p>You can use the setCustomField method to set any custom merchant defined field(s):</p>
+<pre><code class="lang-PHP">$sale-&gt;setCustomField(&quot;entrance_source&quot;, &quot;Search Engine&quot;);
+$sale-&gt;setCustomField(&quot;coupon_code&quot;, &quot;SAVE2011&quot;);
+</code></pre>
+<h2 id="transaction-response">Transaction Response</h2>
+<p>When you submit an AIM transaction you receive an AuthorizeNetAIM_Response
+object in return. You can access each name/value pair in the response as
+you would normally expect:</p>
+<pre><code class="lang-PHP">$response = $sale-&gt;authorizeAndCapture();
+$response-&gt;response_code;
+$response-&gt;response_subcode;
+$response-&gt;response_reason_code;
+$response-&gt;transaction_id;
+</code></pre>
+
+      </body>
+    </html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+	<meta charset="UTF-8">
+  <title>Login - West-MEC PD Systems</title>
+
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="../libs/ace_311/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+              
+            <link href="../libs/jqueryui_1_12/jquery-ui.min.css" rel="stylesheet">
+              
+            <link href="../libs/ace_311/node_modules/@fortawesome/fontawesome-free/css/fontawesome.css" rel="stylesheet">
+              
+            <link href="../libs/ace_311/node_modules/@fortawesome/fontawesome-free/css/solid.css" rel="stylesheet">
+              
+            <link href="../libs/ace_311/node_modules/@fortawesome/fontawesome-free/css/brands.css" rel="stylesheet">
+              
+            <link href="../libs/ace_311/node_modules/chosen-js/chosen.css" rel="stylesheet">
+              
+            <link href="../libs/ace_dmx/pnotify2/PNotify.css" rel="stylesheet">
+              
+            <link href="../libs/ace_dmx/pnotify2/PNotifyBootstrap4.css" rel="stylesheet">
+              
+            <link href="../libs/ace_dmx/pnotify2/PNotifyMobile.css" rel="stylesheet">
+              
+            <link href="../libs/ace_dmx/css/jquery.floatingscroll.css" rel="stylesheet">
+              
+            <link href="../common/css/jquery.steps.css" rel="stylesheet">
+              
+            <link href="../libs/ace_311/node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+              
+            <link href="../libs/ace_311/node_modules/dropzone/dist/dropzone.css" rel="stylesheet">
+              
+            <link href="../common/css/dropzone.css" rel="stylesheet">
+              
+            <link href="../libs/ace_311/node_modules/tiny-date-picker/tiny-date-picker.css" rel="stylesheet">
+              
+            <link href="../libs/ace_311/dist/css/ace-font.css" rel="stylesheet">
+              
+            <script src="../libs/ace_311/node_modules/jquery/dist/jquery.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/popper.js/dist/umd/popper.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/bootstrap/dist/js/bootstrap.js" ></script>
+              
+            <script src="../libs/jqueryui_1_12/jquery-ui.min.js" ></script>
+              
+            <script src="../libs/ace_dmx/momentjs/moment-with-locales.min.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js" ></script>
+              
+            <script src="../libs/ace_dmx/pnotify2/PNotify.js" ></script>
+              
+            <script src="../libs/ace_dmx/pnotify2/PNotifyBootstrap4.js" ></script>
+              
+            <script src="../libs/ace_dmx/pnotify2/PNotifyAnimate.js" ></script>
+              
+            <script src="../libs/ace_dmx/pnotify2/PNotifyFontAwesome5.js" ></script>
+              
+            <script src="../libs/ace_dmx/pnotify2/PNotifyFontAwesome5Fix.js" ></script>
+              
+            <script src="../libs/ace_dmx/pnotify2/PNotifyMobile.js" ></script>
+              
+            <script src="../libs/ace_dmx/js/jquery.floatingscroll.es6.min.js" ></script>
+              
+            <script src="../libs/common_scripts.min.js" ></script>
+              
+            <script src="../libs/jquery2/jquery.highlight-3.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/jquery-validation/dist/jquery.validate.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/jquery-validation/dist/additional-methods.js" ></script>
+              
+            <script src="../libs/ace/dist/js/jquery.maskedinput.min.js" ></script>
+              
+            <script src="../libs/jquery2/jquery-steps/jquery.steps.min.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/chosen-js/chosen.jquery.js" ></script>
+              
+            <script src="../libs/jquery2/jquery.printElement.min.js" ></script>
+              
+            <script src="../libs/ace/assets/js/ajaxfileupload.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/dropzone/dist/dropzone.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/tiny-date-picker/dist/date-range-picker.js" ></script>
+              
+            <script src="../libs/ace/dist/js/inputmask/jquery.inputmask.min.js" ></script>
+              
+            <script src="../libs/ace/dist/js/inputmask/inputmask.binding.js" ></script>
+              
+            <script src="../libs/ace_311/dist/js/ace.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/chart.js/dist/Chart.js" ></script>
+              
+            <script src="../libs/jquery2/cookie/js.cookie.min.js" ></script>
+              
+            <script src="../libs/ace_311/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js" ></script>
+              
+            <link href="../libs/ace_311/node_modules/tiny-date-picker/date-range-picker.css" rel="stylesheet">
+              
+            <link href="../libs/ace_311/dist/css/ace.css" rel="stylesheet">
+              
+        <script>
+    var beforeload = (new Date()).getTime();
+    var successMessage = [];
+    var infoMessage = [];
+    var errorMessage = [];
+    var warningMessage = [];
+    var SITE_URL = "index.html";
+    var LIBS_URL = "/libs/";
+    var REQUEST_URI = "admin.html?ReturnPage=Log-in";
+    var secureUri = false;
+    var fieldErrors = {};
+    var footerHeight = 0;
+    
+    var is_IE = false;
+    var listviewBottomSpace = null;
+    var tempObj = { };
+    Dropzone.autoDiscover = false;
+    var printElementCSS = ['/libs/ace/dist/css/bootstrap.min.css', '/libs/ace/dist/css/ace.min.css', '/libs/ace/dist/css/ace-fonts.css', '/libs/ace/dist/css/font-awesome.min.css'];
+
+    PNotify.defaultModules.set(PNotifyBootstrap4, {});
+    // PNotify.defaultModules.set(PNotifyFontAwesome5, {});
+    PNotify.defaults.addClass = '';
+    PNotify.defaults.closerHover = true;
+    </script>
+    
+    
+        <link href="../common/css/main.css" rel="stylesheet">
+        <link href="../css/local.css" rel="stylesheet">
+  <link href="../common/css/login.css" rel="stylesheet">
+
+
+    
+
+</head>
+
+<body class="registration_body">
+<div class="container">
+
+
+  <div class="modal modal-lg" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-static vertical-center-top-safe -modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header justify-content-center">
+          <p class="modal-title smaller text-center">
+            <span class="light">Welcome to</span> West-MEC Professional Development
+          </p>
+        </div>
+
+        <div class="modal-body">
+
+          <form action="/admin_login.php?ReturnPage=Log-in" method="post" id="loginform">
+            
+            
+
+            <div class="row">
+              <div class="col-12">
+ 
+                            
+                      <label for="username" class="bolder sr-only">Enter username:</label>
+                      
+                      <div class="form-group">
+                        
+                        
+                          <input type="text" class="form-control form-control-lg login-field-1 w-100" placeholder="Email Address" name="username" id="username" value="" required>
+                      </div>
+
+                      <label for="password" class="bolder sr-only">Enter password:</label>
+                      
+                      <div class="form-group">
+
+                        
+                          <input type="password" class="form-control form-control-lg login-field-1 w-100" placeholder="Password" name="password" id="password" required>
+                      </div>                  
+
+                                    <div class="form-group">
+                    <button type="submit" id="loginbutton" class="login-button btn btn-lg btn-block btn-primary btn-embossed" value="Login" name="Login" class="g-recaptcha" data-sitekey="" data-callback="onSubmit" data-action="submit">
+                      Login <i class="fa fa-arrow-right icon-right"></i>
+                    </button>
+                  </div>
+
+                  <hr class="hr-6 visible-sm visible-xs">
+
+                  <div class="d-flex justify-content-center align-items-center">
+                    <div class="btn-group" role="group" aria-label="Password Reset and Create Account">
+                      <a href="create-account.html" class="btn btn-dark">
+                        Create Account
+                      </a>
+                      <a class="btn btn-danger forgot" href="PasswordRecovery.html">Password Reset</a>
+                    </div>
+                  </div>
+
+                  <hr />
+
+                  <div class="d-flex justify-content-center align-items-center">
+                    <a href="index.html" class=""><i class="fas fa-arrow-left"></i> <i>Back to Courses</i></a>
+                  </div>
+
+                  
+
+
+              </div>
+
+            </div>
+
+                        <input type="hidden" name="token" id="token"> 
+            <input type="hidden" name="action" id="action">
+          
+        </form>
+
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+</div>
+
+<script>
+    var mPageName = "login"; //"action" parameter
+  
+  $(document).ready(function() {
+
+    $('#LoginModal').modal({ backdrop: 'static' });
+    //$('#LoginModal').modal('show');
+    $(".modal-backdrop").click(function(){ return false; });
+    
+        $("#username").focus();
+            
+    $("#loginform").validate({
+      rules: {
+        username: { required: true }
+        ,password: { required: true }
+      },
+      messages: {
+        username: { required: "Please enter your email address or Member ID!" }
+        ,password: { required: "Please enter your password!" }
+      }
+    });
+    
+        setInterval(function(){
+      loadReCaptcha();
+    }, 5000);
+    loadReCaptcha();
+
+  });
+</script>
+
+      <form name="tempform" id="tempform" method="post" action="#">
+    <input type="hidden" name="return_url" value="/admin_login.php?ReturnPage=Log-in">
+    <input type="hidden" name="submit_update_3" value="Save">
+    <div class="modal fade" id="temp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="temp-modal-title">Title</h4>
+          </div>
+          <div class="modal-body">
+            Content
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary submit-button" onclick=" document.tempform.submit();">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>                  
+        </div>
+      </div>
+    </div>
+    </form>
+
+    
+    <script type="text/javascript" src="../common/js/page_init.js"></script>
+    <script type="text/javascript" src="../common/js/cfunctions.js"></script>
+    
+    <script>
+    $(document).ready(function(){
+
+            
+                
+                                        
+        
+                
+        
+        if (successMessage.length !== 0)
+          showMessages("success", successMessage);
+        if (infoMessage.length !== 0)
+          showMessages("info", infoMessage);
+        if (errorMessage.length !== 0)
+          showMessages("error", errorMessage);
+        if (warningMessage.length !== 0)
+          showMessages("warning", warningMessage);
+      
+        $('.logout-button').click(function(){
+          $('#temp-modal #temp-modal-title').html("Logging out...");
+          $('#temp-modal .modal-body').html("<h4>Goodbye,<br>See you soon!</h4>");
+          $('#temp-modal .modal-footer').hide();
+          $('#temp-modal').modal();
+          $('.sexy-loader').hide();
+        });
+    
+        var t = setTimeout(function(){ $(".ui-pnotify-history-container").hide(); }, 100);
+
+        $("body").addClass('is-document-loaded');
+
+
+    });
+    </script>
+
+
+    
+
+  
+</body>
+
+</html>
+         

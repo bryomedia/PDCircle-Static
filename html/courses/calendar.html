@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<head>
+    <meta charset="utf-8">
+    <title>West-MEC PD Circle PD Circle</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../libs/ace_311/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <link href="../../libs/jqueryui_1_12/jquery-ui.min.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/@fortawesome/fontawesome-free/css/fontawesome.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/@fortawesome/fontawesome-free/css/solid.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/@fortawesome/fontawesome-free/css/brands.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/chosen-js/chosen.css" rel="stylesheet">
+
+    <link href="../../libs/ace_dmx/pnotify2/PNotify.css" rel="stylesheet">
+
+    <link href="../../libs/ace_dmx/pnotify2/PNotifyBootstrap4.css" rel="stylesheet">
+
+    <link href="../../libs/ace_dmx/pnotify2/PNotifyMobile.css" rel="stylesheet">
+
+    <link href="../../libs/ace_dmx/css/jquery.floatingscroll.css" rel="stylesheet">
+
+    <link href="../../common/css/jquery.steps.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css"
+          rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/dropzone/dist/dropzone.css" rel="stylesheet">
+
+    <link href="../../common/css/dropzone.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/tiny-date-picker/tiny-date-picker.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/node_modules/fullcalendar/main.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/dist/css/ace-font.css" rel="stylesheet">
+
+    <script src="../../libs/ace_311/node_modules/jquery/dist/jquery.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/popper.js/dist/umd/popper.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="../../libs/jqueryui_1_12/jquery-ui.min.js"></script>
+
+    <script src="../../libs/ace_dmx/momentjs/moment-with-locales.min.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotify.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyBootstrap4.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyAnimate.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyFontAwesome5.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyFontAwesome5Fix.js"></script>
+
+    <script src="../../libs/ace_dmx/pnotify2/PNotifyMobile.js"></script>
+
+    <script src="../../libs/ace_dmx/js/jquery.floatingscroll.es6.min.js"></script>
+
+    <script src="../../libs/common_scripts.min.js"></script>
+
+    <script src="../../libs/jquery2/jquery.highlight-3.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/jquery-validation/dist/additional-methods.js"></script>
+
+    <script src="../../libs/ace/dist/js/jquery.maskedinput.min.js"></script>
+
+    <script src="../../libs/jquery2/jquery-steps/jquery.steps.min.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/chosen-js/chosen.jquery.js"></script>
+
+    <script src="../../libs/jquery2/jquery.printElement.min.js"></script>
+
+    <script src="../../libs/ace/assets/js/ajaxfileupload.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/dropzone/dist/dropzone.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/tiny-date-picker/dist/date-range-picker.js"></script>
+
+    <script src="../../libs/ace/dist/js/inputmask/jquery.inputmask.min.js"></script>
+
+    <script src="../../libs/ace/dist/js/inputmask/inputmask.binding.js"></script>
+
+    <script src="../../libs/ace_311/dist/js/ace.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/chart.js/dist/Chart.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/fullcalendar/main.js"></script>
+
+    <script src="../../libs/jquery2/cookie/js.cookie.min.js"></script>
+
+    <script src="../../libs/ace_311/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js"></script>
+
+    <link href="../../libs/ace_311/node_modules/tiny-date-picker/date-range-picker.css" rel="stylesheet">
+
+    <link href="../../libs/ace_311/dist/css/ace.css" rel="stylesheet">
+
+    <script>
+        var beforeload = (new Date()).getTime();
+        var successMessage = [];
+        var infoMessage = [];
+        var errorMessage = [];
+        var warningMessage = [];
+        var SITE_URL = "../../index.html";
+        var LIBS_URL = "/libs/";
+        var REQUEST_URI = "/courses/calendar";
+        var secureUri = false;
+        var fieldErrors = {};
+        var footerHeight = 0;
+
+        var is_IE = false;
+        var listviewBottomSpace = null;
+        var tempObj = {};
+        Dropzone.autoDiscover = false;
+        var printElementCSS = ['/libs/ace/dist/css/bootstrap.min.css', '/libs/ace/dist/css/ace.min.css', '/libs/ace/dist/css/ace-fonts.css', '/libs/ace/dist/css/font-awesome.min.css'];
+
+        PNotify.defaultModules.set(PNotifyBootstrap4, {});
+        // PNotify.defaultModules.set(PNotifyFontAwesome5, {});
+        PNotify.defaults.addClass = '';
+        PNotify.defaults.closerHover = true;
+    </script>
+
+
+    <link href="../../common/css/main.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+    <link href="../../css/frontend.css" rel="stylesheet">
+
+</head>
+<body class="">
+
+<div class="body-container">
+
+    <nav class="navbar navbar-sm navbar-expand-lg navbar-fixed -navbar-blue bgc-white">
+        <div class="navbar-inner brc-grey-l2 flex-wrap shadow-md">
+
+            <div class="d-flex h-100 align-items-center justify-content-xl-between">
+                <a class="navbar-brand ml-2 -text-white" href="../../index.html">
+                    <img src="../../images/logo_pdf3.png"/>
+                </a>
+            </div>
+
+            <!-- .navbar-menu toggler -->
+            <button class="navbar-toggler mx-1 p-25" type="button" data-toggle="collapse" data-target="#navbarMenu"
+                    aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+                <i class="fa fa-bars -text-white"></i>
+            </button>
+
+
+            <div class="ml-auto mr-lg-2 navbar-menu collapse navbar-collapse navbar-backdrop" id="navbarMenu">
+                <div class="navbar-nav">
+                    <ul class="nav nav-compact-2 justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="search.html">
+                                Search For Class
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="calendar.html">
+                                Calendar View
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="../../html/hotel.html">
+                                Hotel
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="../../html/contact.html">
+                                Contact
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle mr-1px" href="../../html/admin.html">
+                                Login
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div><!-- .navbar-menu -->
+
+
+        </div><!-- .navbar-inner -->
+    </nav>
+    <div class="main-container bgc-white" id="main-container">
+
+        <div class="main-content"><!-- new, moved from page content to also wrap the footer -->
+
+
+            <div role="main" class="page-content container container-plus">
+
+                <div class="page-header mb-0 pb-2 pos-rel">
+                    <h1 class="page-title text-primary-d2">
+                        Calendar
+                    </h1>
+
+                </div>
+                <hr class="border-solid brc-primary-m4 mt-0 mb-2">
+
+
+                <div class="card acard">
+
+                    <div class="sexy-loader text-center" id="listview-loader"
+                         style="display: none; position: absolute;"><img src="../../images/please_wait_text.gif"><h4>Please
+                        be patient while the page is loading.</h4></div>
+
+
+                    <div class="card-body" id="listview-view">
+
+
+                        <div class="page-toolbar text-right">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <div id='calendar' class="text-blue-d1"></div>
+                            </div>
+                        </div>
+
+
+                    </div><!-- /.card-body -->
+                </div><!-- /.card .acard -->
+
+            </div>
+
+            <script>
+                var baseURL = '/index.html?Page=DMS&amp;dms_page=load-course&amp;ajax_return=load-course';
+            </script>
+
+
+            <script>
+                $(document).ready(function () {
+
+                    // change styling options and icons
+                    FullCalendar.BootstrapTheme.prototype.classes = {
+                        root: 'fc-theme-bootstrap',
+                        table: 'table-bordered table-bordered brc-default-l2 text-secondary-d1 h-95',
+                        tableCellShaded: 'bgc-secondary-l3',
+                        buttonGroup: 'btn-group',
+                        button: 'btn btn-white btn-h-lighter-blue btn-a-blue',
+                        buttonActive: 'active',
+                        popover: 'card card-primary',
+                        popoverHeader: 'card-header',
+                        popoverContent: 'card-body',
+                    };
+                    FullCalendar.BootstrapTheme.prototype.baseIconClass = 'fa';
+                    FullCalendar.BootstrapTheme.prototype.iconClasses = {
+                        close: 'fa-times',
+                        prev: 'fa-chevron-left',
+                        next: 'fa-chevron-right',
+                        prevYear: 'fa-angle-double-left',
+                        nextYear: 'fa-angle-double-right'
+                    };
+                    FullCalendar.BootstrapTheme.prototype.iconOverrideOption = 'FontAwesome';
+                    FullCalendar.BootstrapTheme.prototype.iconOverrideCustomButtonOption = 'FontAwesome';
+                    FullCalendar.BootstrapTheme.prototype.iconOverridePrefix = 'fa-';
+
+                    // initialize the calendar
+                    var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+                        themeSystem: 'bootstrap',
+
+                        headerToolbar: {
+                            start: 'prev,next today',
+                            center: 'title',
+                            end: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                        },
+
+                        events: [
+                            {
+                                title: 'Professional Knowledge Assessment Prep Course (PK Test Prep) - January 2024',
+                                start: '2024-01-22T08:00:00',
+                                end: '2024-03-04T23:59:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Session Dates: January 22 - March 4, 2024<\/p>\r\n<ul>\r\n<li>Level 2 CTE Class<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers who must take the Assessment of Professional Knowledge Test.<\/li>\r\n<\/ul>\r\n<p>This asynchronous&nbsp;<strong>online class<\/strong>&nbsp;allows you to learn at your own pace. You can access lectures, readings, and other learning materials to complete assignments and other activities at any time during the six-week period. A significant benefit to asynchronous classes is, of course, the flexibility.&nbsp;&nbsp;<\/p>\r\n<p>This course provides an overview of standards and material covered on the NES (formerly AEPA) Professional Knowledge Assessment (Secondary). Participants will engage in discussion and application activities regarding student development and learning, assessment, instruction, the learning environment, and the professional environment.<\/p>\r\n<p><strong>Participants&nbsp;are required to attend a Zoom Kick-Off Meeting on Monday, January 22, from 4-5 pm. Participants must complete one section per week. The class&nbsp;will close on March 4 at midnight.<\/strong><\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 310
+                            }
+                            , {
+                                title: 'Professional Knowledge Assessment Prep Course (PK Test Prep) - March 2024',
+                                start: '2024-03-11T08:00:00',
+                                end: '2024-04-22T23:59:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Session Dates: March 11 - April 22, 2024<\/p>\r\n<ul>\r\n<li>Level 2 CTE Class<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers who must take the Assessment of Professional Knowledge Test.<\/li>\r\n<\/ul>\r\n<p>This asynchronous&nbsp;<strong>online class<\/strong>&nbsp;allows you to learn at your own pace. You can access lectures, readings, and other learning materials to complete assignments and other activities at any time during the six-week period. A significant benefit to asynchronous classes is, of course, the flexibility.&nbsp;&nbsp;<\/p>\r\n<p>This course provides an overview of standards and material covered on the NES (formerly AEPA) Professional Knowledge Assessment (Secondary). Participants will engage in discussion and application activities regarding student development and learning, assessment, instruction, the learning environment, and the professional environment.<\/p>\r\n<p><strong>Participants&nbsp;are required to attend a Zoom Kick-Off Meeting on Monday, March 11, from 4-5 pm. Participants must complete one section per week. The class&nbsp;will close on April 22 at midnight.<\/strong><\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 311
+                            }
+                            , {
+                                title: 'Professional Knowledge Assessment Prep Course (PK Test Prep) - May 2024',
+                                start: '2024-05-06T08:00:00',
+                                end: '2024-06-17T23:59:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Session Dates: May 6 - June 17, 2024<\/p>\r\n<ul>\r\n<li>Level 2 CTE Class<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers who must take the Assessment of Professional Knowledge Test.<\/li>\r\n<\/ul>\r\n<p>This asynchronous&nbsp;<strong>online class<\/strong>&nbsp;allows you to learn at your own pace. You can access lectures, readings, and other learning materials to complete assignments and other activities at any time during the six-week period. A significant benefit to asynchronous classes is, of course, the flexibility.&nbsp;&nbsp;<\/p>\r\n<p>This course provides an overview of standards and material covered on the NES (formerly AEPA) Professional Knowledge Assessment (Secondary). Participants will engage in discussion and application activities regarding student development and learning, assessment, instruction, the learning environment, and the professional environment.<\/p>\r\n<p><strong>Participants&nbsp;are required to attend a Zoom Kick-Off Meeting on Monday, May 6, from 4-5 pm. Participants must complete one section per week. The class&nbsp;will close on June 17 at midnight.<\/strong><\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 312
+                            }
+                            , {
+                                title: 'Instructional Best Practices',
+                                start: '2024-01-25T08:00:00',
+                                end: '2024-01-25T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.<\/li>\r\n<\/ul>\r\n<p><strong>This course consists of TWO 8-hour classes. You must attend BOTH classes to receive credit.&nbsp;<\/strong><\/p>\r\n<p>This course is an introduction to the design and use of CTE curriculum. In this highly engaging course, teachers will focus on the design and delivery of relevant and engaging lessons. Special emphasis is placed on active participation strategies, a strong introduction to each lesson, clear and appropriate objective(s), a variety of ways to meet the objective(s), and closure to assess learning. These strategies will be woven across the entire workshop.&nbsp;<\/p>\r\n<p>All participants whose districts are members of the AZ CTE Curriculum Consortium and who complete both days of this workshop will receive password-protected access to the Curriculum Connection with its 3500+ bank of outstanding lesson plans for more than 20 CTE programs written by Arizona CTE teachers.&nbsp;<\/p>\r\n<p>This course is excellent for every teacher. Ace your next evaluation!<\/p>\r\n<p><strong>There is no homework for this class.&nbsp;Upon successful completion of BOTH Instructional Best Practices classes, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 314
+                            }
+                            , {
+                                title: 'Instructional Best Practices',
+                                start: '2024-02-06T08:00:00',
+                                end: '2024-02-06T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.<\/li>\r\n<\/ul>\r\n<p><strong>This course consists of TWO 8-hour classes. You must attend BOTH classes to receive credit.&nbsp;<\/strong><\/p>\r\n<p>This course is an introduction to the design and use of CTE curriculum. In this highly engaging course, teachers will focus on the design and delivery of relevant and engaging lessons. Special emphasis is placed on active participation strategies, a strong introduction to each lesson, clear and appropriate objective(s), a variety of ways to meet the objective(s), and closure to assess learning. These strategies will be woven across the entire workshop.&nbsp;<\/p>\r\n<p>All participants whose districts are members of the AZ CTE Curriculum Consortium and who complete both days of this workshop will receive password-protected access to the Curriculum Connection with its 3500+ bank of outstanding lesson plans for more than 20 CTE programs written by Arizona CTE teachers.&nbsp;<\/p>\r\n<p>This course is excellent for every teacher. Ace your next evaluation!<\/p>\r\n<p><strong>There is no homework for this class.&nbsp;Upon successful completion of BOTH Instructional Best Practices classes, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 314
+                            }
+                            , {
+                                title: 'Instructional Best Practices',
+                                start: '2024-05-24T08:00:00',
+                                end: '2024-05-24T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.<\/li>\r\n<\/ul>\r\n<p><strong>This course consists of TWO 8-hour classes. You must attend BOTH classes to receive credit.&nbsp;<\/strong><\/p>\r\n<p>This course is an introduction to the design and use of CTE curriculum. In this highly engaging course, teachers will focus on the design and delivery of relevant and engaging lessons. Special emphasis is placed on active participation strategies, a strong introduction to each lesson, clear and appropriate objective(s), a variety of ways to meet the objective(s), and closure to assess learning. These strategies will be woven across the entire workshop.&nbsp;<\/p>\r\n<p>All participants whose districts are members of the AZ CTE Curriculum Consortium and who complete both days of this workshop will receive password-protected access to the Curriculum Connection with its 3500+ bank of outstanding lesson plans for more than 20 CTE programs written by Arizona CTE teachers.&nbsp;<\/p>\r\n<p>This course is excellent for every teacher. Ace your next evaluation!<\/p>\r\n<p><strong>There is no homework for this class.&nbsp;Upon successful completion of BOTH Instructional Best Practices classes, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 315
+                            }
+                            , {
+                                title: 'Instructional Best Practices',
+                                start: '2024-05-30T08:00:00',
+                                end: '2024-05-30T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.<\/li>\r\n<\/ul>\r\n<p><strong>This course consists of TWO 8-hour classes. You must attend BOTH classes to receive credit.&nbsp;<\/strong><\/p>\r\n<p>This course is an introduction to the design and use of CTE curriculum. In this highly engaging course, teachers will focus on the design and delivery of relevant and engaging lessons. Special emphasis is placed on active participation strategies, a strong introduction to each lesson, clear and appropriate objective(s), a variety of ways to meet the objective(s), and closure to assess learning. These strategies will be woven across the entire workshop.&nbsp;<\/p>\r\n<p>All participants whose districts are members of the AZ CTE Curriculum Consortium and who complete both days of this workshop will receive password-protected access to the Curriculum Connection with its 3500+ bank of outstanding lesson plans for more than 20 CTE programs written by Arizona CTE teachers.&nbsp;<\/p>\r\n<p>This course is excellent for every teacher. Ace your next evaluation!<\/p>\r\n<p><strong>There is no homework for this class.&nbsp;Upon successful completion of BOTH Instructional Best Practices classes, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 315
+                            }
+                            , {
+                                title: 'Laboratory Safety & Management',
+                                start: '2024-06-13T08:00:00',
+                                end: '2024-06-13T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.<\/li>\r\n<li>\r\n<p>Participants should bring their own technology to work on their business plan<\/p>\r\n<\/li>\r\n<\/ul>\r\n<p>Are you ready for students in the lab? This workshop is designed to help participants develop a laboratory improvement plan, including management, clean-up procedures, safety procedures, and meeting monitoring agency mandates. Join us as we identify a variety of practical steps you can take to ensure that your students are safe in the laboratory and that you are protected. Participants will have the opportunity to evaluate their CTE labs and develop a management system for their CTE labs. You will also be treated to a variety of techniques to enable you to manage your lab effectively and efficiently. Additionally, you will gain new skills needed to utilize a proven methodology of teaching in the lab or shop.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 318
+                            }
+                            , {
+                                title: 'CTE Essentials',
+                                start: '2024-06-20T08:00:00',
+                                end: '2024-06-20T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1 CTE Class<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE employees.&nbsp;<\/li>\r\n<\/ul>\r\n<p>The CTE Delivery Model is THE premier educational system for all students.&nbsp;<\/p>\r\n<p>CTE Essentials will give you an overview of each of the four components of this outstanding model and allow you time to process how you can incorporate each element into all of your instructional units as you plan your program&rsquo;s calendar. It will also provide some insight into the many roles a CTE teacher plays in the course of any school day, where to find support to meet those expectations, and how to transition between each of them. CTE Essentials is truly a must-have course for the teacher who is looking to build a strong program for students.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 320
+                            }
+                            , {
+                                title: 'Grading And Assessment',
+                                start: '2024-03-28T08:00:00',
+                                end: '2024-03-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 2<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.&nbsp;<\/li>\r\n<\/ul>\r\n<p>Assessing and grading are two different actions. Learn a variety of formative and summative assessment techniques. A major focus is how to assess student work using rubrics. This class will help you create a clear grading policy and develop a variety of ways to assess student learning.<\/p>\r\n<p>How should students in CTE be assessed? How do we set up a fair grading system for both teachers and students? Learn about the wide variety of options that address both of these issues to help you develop both your own philosophy for grading as well as effective strategies for multiple ways to assess student learning and progress. You will also leave with a greater understanding of how to align testing and evaluation to your course outcomes and grading policies that will increase effective feedback for students.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 322
+                            }
+                            , {
+                                title: 'Grading And Assessment',
+                                start: '2024-05-30T08:00:00',
+                                end: '2024-05-30T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 2<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.&nbsp;<\/li>\r\n<\/ul>\r\n<p>Assessing and grading are two different actions. Learn a variety of formative and summative assessment techniques. A major focus is how to assess student work using rubrics. This class will help you create a clear grading policy and develop a variety of ways to assess student learning.<\/p>\r\n<p>How should students in CTE be assessed? How do we set up a fair grading system for both teachers and students? Learn about the wide variety of options that address both of these issues to help you develop both your own philosophy for grading as well as effective strategies for multiple ways to assess student learning and progress. You will also leave with a greater understanding of how to align testing and evaluation to your course outcomes and grading policies that will increase effective feedback for students.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 323
+                            }
+                            , {
+                                title: 'Effective Demonstrations',
+                                start: '2024-03-05T08:00:00',
+                                end: '2024-03-05T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 2<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>\r\n<p>This class is designed for all CTE teachers.&nbsp;<\/p>\r\n<\/li>\r\n<\/ul>\r\n<p>Whether in a welding lab or a bioscience lab, effective demonstrations are crucial. If done correctly, every student can successfully perform the new skill with little or no frustration, without wasted materials, and attain proficiency in a way that will ensure the whole class progresses at an appropriate pace. This is a real career extender! When you are successful in the lab, and the students are successful in the lab, teaching can be very rewarding. An added bonus is that students complete the new skill in a safe environment. Come and learn this four-part demonstration method.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 325
+                            }
+                            , {
+                                title: 'Effective Demonstrations',
+                                start: '2024-05-24T08:00:00',
+                                end: '2024-05-24T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 2<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>\r\n<p>This class is designed for all CTE teachers.&nbsp;<\/p>\r\n<\/li>\r\n<\/ul>\r\n<p>Whether in a welding lab or a bioscience lab, effective demonstrations are crucial. If done correctly, every student can successfully perform the new skill with little or no frustration, without wasted materials, and attain proficiency in a way that will ensure the whole class progresses at an appropriate pace. This is a real career extender! When you are successful in the lab, and the students are successful in the lab, teaching can be very rewarding. An added bonus is that students complete the new skill in a safe environment. Come and learn this four-part demonstration method.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 326
+                            }
+                            , {
+                                title: 'Rubrics To Increase Student Success',
+                                start: '2024-03-07T08:00:00',
+                                end: '2024-03-07T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 3<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.&nbsp;<\/li>\r\n<\/ul>\r\n<p>CTE courses are driven by student-created projects. Rubrics are an evaluation tool that can increase the quality of those student projects while simultaneously giving the teacher a quicker, fairer way to assess their quality. Come to this workshop with one or two student projects that you would like to assess more easily, and you will leave with an excellent rubric that you personalized for your classroom and the confidence and skills to create additional rubrics for the other student projects in your curriculum.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 328
+                            }
+                            , {
+                                title: 'Rubrics To Increase Student Success',
+                                start: '2024-06-20T08:00:00',
+                                end: '2024-06-20T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 3<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.&nbsp;<\/li>\r\n<\/ul>\r\n<p>CTE courses are driven by student-created projects. Rubrics are an evaluation tool that can increase the quality of those student projects while simultaneously giving the teacher a quicker, fairer way to assess their quality. Come to this workshop with one or two student projects that you would like to assess more easily, and you will leave with an excellent rubric that you personalized for your classroom and the confidence and skills to create additional rubrics for the other student projects in your curriculum.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 329
+                            }
+                            , {
+                                title: 'Using Advisory Councils Effectively',
+                                start: '2024-06-11T08:00:00',
+                                end: '2024-06-11T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 3<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.&nbsp;<\/li>\r\n<\/ul>\r\n<p><span style=\"font-weight: 400;\">An energetic and involved advisory council can have a significant impact on helping your program and students achieve their goals!&nbsp;<\/span>This interactive class is designed to ensure success in the formation and use of industry advisory councils. During this class, you will learn how to form a committee, how to conduct useful advisory council meetings, and how to use advisory council members for continuous program improvement.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 331
+                            }
+                            , {
+                                title: 'Empowering Students Through Professional Skills',
+                                start: '2024-02-08T08:00:00',
+                                end: '2024-02-08T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 3<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.<\/li>\r\n<\/ul>\r\n<p><strong>Want to make instant connections and get the most out of your time? Please bring a copy of your Scope &amp; Sequence!<\/strong><\/p>\r\n<p>This course will explore the nine Professional Skills identified by the Arizona Department of Education in collaboration with industry. Participants will identify them, use created rubrics to assess their use, explore strategies to embed them across their curriculum, and methods to evaluate students.&nbsp;<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 338
+                            }
+                            , {
+                                title: 'Serving Exceptional Students In CTE',
+                                start: '2024-02-22T08:00:00',
+                                end: '2024-02-22T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 3<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE educators.&nbsp;<\/li>\r\n<\/ul>\r\n<p>This course is designed to provide CTE educators and other interested parties with a broad understanding of special education. During the course of this interactive class, we will cover a range of topics, including special education law, modifications, accommodations, interventions, supports, the special education process, the Response to Intervention process, and more.<\/p>\r\n<p>Our goal is to provide you with the tools you need to serve exceptional students enrolled in CTE courses more effectively.<\/p>\r\n<h6><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/h6>',
+                                event_id: 340
+                            }
+                            , {
+                                title: 'Work-Based Learning',
+                                start: '2024-04-16T08:00:00',
+                                end: '2024-04-16T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 3<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.&nbsp;<\/li>\r\n<\/ul>\r\n<p><strong>**This course satisfies the ADE requirement for the Cooperative Education Endorsement.<\/strong><\/p>\r\n<p>Create meaningful work-based learning experiences for your students. This course will provide teachers with a variety of models of work-based learning along with the associated forms, agreements, and guidelines. You will select the model that is most appropriate for your situation and create a plan to implement work-based learning as a part of your premier program!<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 342
+                            }
+                            , {
+                                title: 'Lesson Plan Writing',
+                                start: '2024-04-18T08:00:00',
+                                end: '2024-04-18T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 2 CTE Professional Development Class<\/li>\r\n<li><strong>Prerequisite: <\/strong>Successful completion of Instructional Best Practices<\/li>\r\n<\/ul>\r\n<p>This class will show you how to build a lesson plan with all the needed components for student success.<\/p>\r\n<p>Wouldn&rsquo;t you love to learn to write lessons that allow you to walk into your classroom each day feeling fully prepared? This class will help you with that goal. Each teacher will complete a task analysis for one or more measurement criteria, determine the number of lessons to be written for the unit of instruction and write the first lesson in the unit.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 344
+                            }
+                            , {
+                                title: 'Technical Reading & Performance Literacy',
+                                start: '2024-01-11T08:00:00',
+                                end: '2024-01-11T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers<\/li>\r\n<li>Participants need to bring their own laptop or tablet<\/li>\r\n<\/ul>\r\n<p><strong>This course consists of TWO 8-hour classes. You must attend BOTH classes to receive credit.&nbsp;<\/strong><\/p>\r\n<p>Your CTE classroom truly is the key to the meaningful application of the current career and college readiness standards. This course will give you specific examples where Arizona&rsquo;s Common Core standards for Technical Literacy already exist in your CTE program, it will provide opportunities for you to incorporate additional standards into your lessons, AND it will give you strategies to take back to your classroom to increase your student&rsquo;s ability to read difficult technical information more effectively.<\/p>\r\n<p>Performance Literacy is the partner class for Technical Reading. This second course allows teachers to gain a deeper understanding of writing and speaking standards, identify how they currently use them in their programs, and determine specific steps they can take to increase their use of these standards as well as their students&rsquo; success with them.<\/p>\r\n<p>The technical literacy standards are skill-driven and a perfect fit for our CTE programs&rsquo; focus on career AND college readiness as our students complete their programs.<\/p>\r\n<p>Come find out why CTE really is a powerful driver for creating literate employees for our 21st-century workforce!<\/p>\r\n<p><strong>There is no homework for this class. Upon successful completion of Technical Reading and Performance Literacy, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 346
+                            }
+                            , {
+                                title: 'Technical Reading & Performance Literacy',
+                                start: '2024-01-23T08:00:00',
+                                end: '2024-01-23T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers<\/li>\r\n<li>Participants need to bring their own laptop or tablet<\/li>\r\n<\/ul>\r\n<p><strong>This course consists of TWO 8-hour classes. You must attend BOTH classes to receive credit.&nbsp;<\/strong><\/p>\r\n<p>Your CTE classroom truly is the key to the meaningful application of the current career and college readiness standards. This course will give you specific examples where Arizona&rsquo;s Common Core standards for Technical Literacy already exist in your CTE program, it will provide opportunities for you to incorporate additional standards into your lessons, AND it will give you strategies to take back to your classroom to increase your student&rsquo;s ability to read difficult technical information more effectively.<\/p>\r\n<p>Performance Literacy is the partner class for Technical Reading. This second course allows teachers to gain a deeper understanding of writing and speaking standards, identify how they currently use them in their programs, and determine specific steps they can take to increase their use of these standards as well as their students&rsquo; success with them.<\/p>\r\n<p>The technical literacy standards are skill-driven and a perfect fit for our CTE programs&rsquo; focus on career AND college readiness as our students complete their programs.<\/p>\r\n<p>Come find out why CTE really is a powerful driver for creating literate employees for our 21st-century workforce!<\/p>\r\n<p><strong>There is no homework for this class. Upon successful completion of Technical Reading and Performance Literacy, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 346
+                            }
+                            , {
+                                title: 'Program Management',
+                                start: '2024-02-20T08:00:00',
+                                end: '2024-02-20T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p><span style=\"font-weight: 400;\">What constitutes an \"approved program?\" Come and learn in-depth what is required to ensure that your program is in compliance and eligible to receive Federal, State, and JTED funding.<\/span><\/p>\r\n<p><span style=\"font-weight: 400;\">You will leave with the skills needed to manage the many facets of running a premier CTE program including purchasing, collection of data, reports, advisory committees, and of program assessments, attracting and retaining non-traditional students, and more.&nbsp;<\/span>You will develop an action plan to be successful with ADE Program Monitoring.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 347
+                            }
+                            , {
+                                title: 'Strategic Planning',
+                                start: '2024-03-26T08:00:00',
+                                end: '2024-03-26T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>We all know that truly great CTE programs are the result of stellar planning. Plan for success, enroll in the Strategic Planning course. You&rsquo;ll learn how leaders develop compelling plans and execute those plans in a way that empowers all involved.<\/p>\r\n<p>This course is designed to help participants develop a strategic/tactical plan for their CTE program. Participants will learn the strategic planning process and apply that knowledge to the development of a plan for their program.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 348
+                            }
+                            , {
+                                title: 'Formative Assessments For CTE Programs',
+                                start: '2024-04-30T08:00:00',
+                                end: '2024-04-30T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 4<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for advanced CTE teachers.&nbsp;<\/li>\r\n<\/ul>\r\n<p><span style=\"font-weight: 400;\">This highly engaging course will provide you with an opportunity to evaluate the purpose of formative assessments. Topics include the role and types of assessments, the process to develop an objective assessment, as well as criteria for crafting quality multiple-choice items. You will learn the skills needed to create objective assessment items using a process that mirrors the development of items for the Arizona CTE Technical Skill Assessments. You will develop an understanding of how to assess student skills in relation to standards and Bloom&rsquo;s Taxonomy levels that require the application of concepts and critical thinking. In addition to learning about assessment development, you will create formative assessment items for use with students in your CTE program and others in the CTE community.<\/span><\/p>\r\n<p><span style=\"font-weight: 400;\">You will be empowered to implement concepts immediately in your classroom.<\/span><\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 349
+                            }
+                            , {
+                                title: 'Advanced Methods Of CTE',
+                                start: '2024-05-02T08:00:00',
+                                end: '2024-05-02T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 4<\/li>\r\n<li>Prerequisite:&nbsp; Completion of Instructional Best Practices Day 1 and Day 2<\/li>\r\n<li>This class is designed for advanced CTE teachers.<\/li>\r\n<\/ul>\r\n<p><span style=\"font-weight: 400;\">This course will support teachers&rsquo; continuing development as outstanding teachers for CTE programs by examining their personal educational philosophy, instructional design, and methodology. Three major components comprise the course:<\/span><\/p>\r\n<ol>\r\n<li><span style=\"font-weight: 400;\"> Examining Beliefs About Learning &ndash; developing your own personal philosophy about learning<\/span><\/li>\r\n<li><span style=\"font-weight: 400;\"> Motivating Adolescent Learners &ndash; identify characteristics of adolescents and design a classroom that is especially effective for high school students<\/span><\/li>\r\n<li><span style=\"font-weight: 400;\"> Engagement &ndash; active participation strategies to use every day in your classroom: instruction models, active participation strategies, and major components that are especially effective with adolescents.<\/span><\/li>\r\n<\/ol>\r\n<p><strong><em>NOTE: <\/em><\/strong><strong>&nbsp;<\/strong><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 350
+                            }
+                            , {
+                                title: 'CTSO New Advisor Training',
+                                start: '2024-06-13T08:00:00',
+                                end: '2024-06-13T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Career and Technical Student Organizations (CTSO) will take your CTE Program to the next level. Teachers that have strong student organizations love the benefits of having students involved in them. Students become leaders, take ownership of their CTE Program, increase their technical knowledge and skill through completion, and make friends.<\/p>\r\n<p>Skills USA, Future Business Leaders of America (FBLA), Future Farmers of America (FFA), Health Occupation Students Association (HOSA), Distribute Education Club of America (DECA), Family, Career and Community Leaders of America (FCCLA) and Educators Rising are the seven approved CTSO&rsquo;s in Arizona.<\/p>\r\n<p>Come and learn about the CTSO that YOU will be advising! This is a very practical, hands-on course that provides the information, guidance, and time you need to start a chapter and meet the requirements for having a chapter. Come ready to work! By the end of the course, you will breathe a big sigh of relief as you will feel empowered to get your chapter up and running.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>\r\n<p>&nbsp;<\/p>',
+                                event_id: 351
+                            }
+                            , {
+                                title: 'Technical Reading & Performance Literacy',
+                                start: '2024-06-11T08:00:00',
+                                end: '2024-06-11T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.<\/li>\r\n<\/ul>\r\n<p><strong>This course consists of TWO 8-hour classes. You must attend BOTH classes to receive credit.&nbsp;<\/strong><\/p>\r\n<p>Your CTE classroom truly is the key to the meaningful application of the current career and college readiness standards. This course will give you specific examples where Arizona&rsquo;s Common Core standards for Technical Literacy already exist in your CTE program, it will provide opportunities for you to incorporate additional standards into your lessons, AND it will give you strategies to take back to your classroom to increase your student&rsquo;s ability to read difficult technical information more effectively.<\/p>\r\n<p>Performance Literacy is the partner class for Technical Reading. This second course allows teachers to gain a deeper understanding of writing and speaking standards, identify how they currently use them in their programs, and determine specific steps they can take to increase their use of these standards as well as their students&rsquo; success with them.<\/p>\r\n<p>The technical literacy standards are skill-driven and a perfect fit for our CTE programs&rsquo; focus on career AND college readiness as our students complete their programs.<\/p>\r\n<p>Come find out why CTE really is a powerful driver for creating literate employees for our 21st-century workforce!<\/p>\r\n<p><strong>There is no homework for this class. Upon successful completion of Technical Reading and Performance Literacy, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 352
+                            }
+                            , {
+                                title: 'Technical Reading & Performance Literacy',
+                                start: '2024-06-18T08:00:00',
+                                end: '2024-06-18T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 1<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.<\/li>\r\n<\/ul>\r\n<p><strong>This course consists of TWO 8-hour classes. You must attend BOTH classes to receive credit.&nbsp;<\/strong><\/p>\r\n<p>Your CTE classroom truly is the key to the meaningful application of the current career and college readiness standards. This course will give you specific examples where Arizona&rsquo;s Common Core standards for Technical Literacy already exist in your CTE program, it will provide opportunities for you to incorporate additional standards into your lessons, AND it will give you strategies to take back to your classroom to increase your student&rsquo;s ability to read difficult technical information more effectively.<\/p>\r\n<p>Performance Literacy is the partner class for Technical Reading. This second course allows teachers to gain a deeper understanding of writing and speaking standards, identify how they currently use them in their programs, and determine specific steps they can take to increase their use of these standards as well as their students&rsquo; success with them.<\/p>\r\n<p>The technical literacy standards are skill-driven and a perfect fit for our CTE programs&rsquo; focus on career AND college readiness as our students complete their programs.<\/p>\r\n<p>Come find out why CTE really is a powerful driver for creating literate employees for our 21st-century workforce!<\/p>\r\n<p><strong>There is no homework for this class. Upon successful completion of Technical Reading and Performance Literacy, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 352
+                            }
+                            , {
+                                title: 'Lesson Plan Writing',
+                                start: '2024-06-18T08:00:00',
+                                end: '2024-06-18T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 2 CTE Class<\/li>\r\n<li><strong>Prerequisite:<\/strong> Successful completion of Instructional Best Practices<\/li>\r\n<\/ul>\r\n<p>This class will show you how to build a lesson plan with all the needed components for student success.<\/p>\r\n<p>Wouldn&rsquo;t you love to learn to write lessons that allow you to walk into your classroom each day feeling fully prepared? This class will help you with that goal. Each teacher will complete a task analysis for one or more measurement criteria, determine the number of lessons to be written for the unit of instruction, and write the first lesson in the unit.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 353
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Mesa Public Schools',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Mesa Public School employees.<\/p>',
+                                event_id: 360
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Agua Fria Union High School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Agua Fria Union High School District employees.<\/p>',
+                                event_id: 364
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Buckeye Union High School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Buckeye Union High School District employees.<\/p>',
+                                event_id: 365
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Deer Valley Unified School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Deer Valley Unified School District employees.<\/p>',
+                                event_id: 366
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Dysart Unified School District ',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Dysart Unified School District employees.<\/p>',
+                                event_id: 367
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Glendale Union High School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Glendale Union High School District employees.<\/p>',
+                                event_id: 368
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Paradise Valley Unified School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Paradise Valley Unified School District employees.<\/p>',
+                                event_id: 369
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Peoria Unified School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Peoria Unified School District employees.<\/p>',
+                                event_id: 370
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Saddle Mountain Unified School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Saddle Mountain Unified School District employees.<\/p>',
+                                event_id: 371
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Tolleson Union High School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Tolleson Union High School District employees.<\/p>',
+                                event_id: 372
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Wickenburg Unified School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Wickenburg Unified School District employees.<\/p>',
+                                event_id: 373
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Stride K12',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Stride K12 employees.<\/p>',
+                                event_id: 374
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Pinon Unified School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Pinon Unified School District employees.<\/p>',
+                                event_id: 375
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Paradise Honors',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Paradise Honors employees.<\/p>',
+                                event_id: 376
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Paradise Honors',
+                                start: '2023-07-03T08:00:00',
+                                end: '2024-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Paradise Honors employees.<\/p>',
+                                event_id: 377
+                            }
+                            , {
+                                title: 'More Than Sad: Suicide Awareness Training',
+                                start: '2024-03-01T12:30:00',
+                                end: '2024-03-01T15:30:00',
+                                // allDay: true,
+                                className: 'bgc-orange text-white text-95 cursor-pointer',
+                                description: '<p>In an American Foundation for Suicide Prevention 2020 report, suicide is identified as the 2nd leading cause of death for Arizona\'s adolescents and young adults (ages 10-34). In fact, on average, one person dies by suicide every six hours in our state.<\/p>\r\n<p>As an intervention to reduce the suicide rates across the state, the legislature passed a law that, as of July 1, 2020, all school staff in grades 6 through 12 must have suicide awareness training at least once every three years from one of eight approved curriculums.<\/p>\r\n<p>West-MEC is offering <strong>FREE<\/strong> in-person More Than Sad suicide awareness training on <strong>March 1, 2024, from 12:30-3:30 p.m.<\/strong> at the West-MEC Corporate Office located at <a href=\"https://goo.gl/maps/WmTdb3LFqxBEk8ag7\">5487 N. 99th Ave in Glendale<\/a>.<\/p>\r\n<p>Participants in this class will increase their understanding of the problem of youth suicide, the risk factors that lead to suicide, and the treatment and prevention of suicidal behavior in adolescents.<\/p>\r\n<ul>\r\n<li>This course meets the Arizona legislative requirements for mandatory training.<\/li>\r\n<li>Participants must attend the FULL THREE-HOUR CLASS to obtain a certificate of completion.<\/li>\r\n<\/ul>',
+                                event_id: 379
+                            }
+                            , {
+                                title: 'Everything To Gain: Supporting Postsecondary Attainment',
+                                start: '2024-01-17T08:30:00',
+                                end: '2024-01-17T10:00:00',
+                                // allDay: true,
+                                className: 'bgc-blue text-white text-95 cursor-pointer',
+                                description: '<p>Dr. Jennifer Murphy, Sr. Director for Attainment, Education Forward AZ, will present this groundbreaking report and statewide campaign to increase degree and certificate attainment as an Arizona statewide imperative. The data is clear: Everything to Gain reveals that Arizonans who pursue postsecondary education experience higher lifetime earnings, better health, and more economic opportunities. Statewide, the goal is to increase higher education enrollment by 20% percent per cohort, which could result in more than $5 billion in economic gains for Arizona per year. How can each of us contribute to this worthy goal? How are West-MEC and CTE advancing postsecondary initiatives? Please join us for this critical conversation.<\/p>',
+                                event_id: 395
+                            }
+                            , {
+                                title: 'High Opportunity Programs At Northwest Campus',
+                                start: '2024-02-29T14:00:00',
+                                end: '2024-02-29T15:30:00',
+                                // allDay: true,
+                                className: 'bgc-blue text-white text-95 cursor-pointer',
+                                description: '<p dir=\"ltr\">Come out to see the Northwest Campus in Surprise to explore innovative opportunities that exist for your students! Do you have a student who is still looking for that niche opportunity, but you aren&rsquo;t quite sure where to direct them? This is the professional development opportunity for you.<\/p>\r\n<p dir=\"ltr\">As the West Valley continues to grow, the demand for industry credentials is more important than ever. The Northwest Campus is uniquely positioned to be right in the center of the economic activity in the City of Surprise. This course will go over existing opportunities for students that are still available after the closing of priority applications at Northwest Campus. We will have a presentation followed by program tours for all participants.<\/p>',
+                                event_id: 396
+                            }
+                            , {
+                                title: 'Charter/Private School High Opportunity Program Showcase & Luncheon',
+                                start: '2024-04-05T12:00:00',
+                                end: '2024-04-05T14:00:00',
+                                // allDay: true,
+                                className: 'bgc-blue text-white text-95 cursor-pointer',
+                                description: '<p>West-MEC Student Services is excited to provide lunch and spend time with Charter and Private School Counselors/Advisors that work with West-MEC Central Programs. Our afternoon will include conversations about 24-25 class openings in High Opportunity Programs, the late application process, knowledge about entry-level careers, technical careers, and professional careers using Career Trees, and information on Credential opportunities for students.<\/p>',
+                                event_id: 398
+                            }
+                            , {
+                                title: 'High Opportunity Programs At Central Campus',
+                                start: '2024-02-27T13:30:00',
+                                end: '2024-02-27T14:30:00',
+                                // allDay: true,
+                                className: 'bgc-blue text-white text-95 cursor-pointer',
+                                description: '<p>Do you have a student who is still looking for that niche opportunity, but you aren&rsquo;t quite sure where to direct them? This is the professional development opportunity for you. Come see our 1-Year Drone Program for Seniors and our 2 Year Precision Machining Program for Juniors!<\/p>\r\n<p>This course will go over existing opportunities for students that are still available after the closing of priority applications at Central Campus. We will have a presentation followed by program tours for all participants.<\/p>\r\n<p>Come out to see the Central Campus in Glendale to explore innovative opportunities that exist for your students!<\/p>',
+                                event_id: 400
+                            }
+                            , {
+                                title: '2023-2024 PD Class Membership - Nadaburg Unified School District',
+                                start: '2023-07-03T08:00:00',
+                                end: '2025-06-28T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p>Unlimited registration to Certification Series courses for Nadaburg employees.<\/p>',
+                                event_id: 401
+                            }
+                            , {
+                                title: 'School-Based Enterprises (Online Synchronous)',
+                                start: '2024-02-15T16:00:00',
+                                end: '2024-02-15T18:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p><strong>Participants must be in a program that can support an SBE. If you have questions, please contact <a href=\"mailto:PD@west-mec.org\" target=\"_blank\" rel=\"noopener\">PD@west-mec.org<\/a><\/strong><\/p>\r\n<ul>\r\n<li>Level 4 CTE Professional Development Class<\/li>\r\n<li>This class is designed for CTE teachers who create and implement a School-Based Enterprise<\/li>\r\n<li>Participants must create a business plan for a new School-Based Enterprise (SBE) or an in-depth analysis of a current SBE to earn ADE credit<\/li>\r\n<\/ul>\r\n<p><strong>This is a synchronous course that will have three online meetings&nbsp;<\/strong><\/p>\r\n<ul>\r\n<li>Participants are required to be on camera and have a functioning microphone for the duration of all three online session<\/li>\r\n<li>Participants must attend from a quiet, uninterrupted space<\/li>\r\n<li>This is an interactive class that will require your active participation<\/li>\r\n<li>After registering, a Zoom link will be sent<\/li>\r\n<\/ul>\r\n<p><strong>Participants must attend all three online meetings from 4 pm-6 pm<\/strong><\/p>\r\n<ul>\r\n<li>Thursday, February 15, 2024<\/li>\r\n<li>Thursday, March 14, 2024<\/li>\r\n<li>Thursday, April 4, 2024<\/li>\r\n<\/ul>\r\n<p>An effective school-based enterprise (SBE) provides students with the unique opportunity to develop and practice real-world industry experience while serving the needs of their campus and/or community! This course is designed to help participants successfully develop and manage a successful SBE.<\/p>\r\n<p>Participants will analyze the key components of SBEs and identify the differences between this model and other forms of work-based learning. Participants will also identify the key elements necessary for planning and implementing a school-based enterprise, including best practices and record-keeping requirements. Throughout this course, participants will develop a business plan for their proposed enterprise.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 434
+                            }
+                            , {
+                                title: 'School-Based Enterprises (Online Synchronous)',
+                                start: '2024-03-14T16:00:00',
+                                end: '2024-03-14T18:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p><strong>Participants must be in a program that can support an SBE. If you have questions, please contact <a href=\"mailto:PD@west-mec.org\" target=\"_blank\" rel=\"noopener\">PD@west-mec.org<\/a><\/strong><\/p>\r\n<ul>\r\n<li>Level 4 CTE Professional Development Class<\/li>\r\n<li>This class is designed for CTE teachers who create and implement a School-Based Enterprise<\/li>\r\n<li>Participants must create a business plan for a new School-Based Enterprise (SBE) or an in-depth analysis of a current SBE to earn ADE credit<\/li>\r\n<\/ul>\r\n<p><strong>This is a synchronous course that will have three online meetings&nbsp;<\/strong><\/p>\r\n<ul>\r\n<li>Participants are required to be on camera and have a functioning microphone for the duration of all three online session<\/li>\r\n<li>Participants must attend from a quiet, uninterrupted space<\/li>\r\n<li>This is an interactive class that will require your active participation<\/li>\r\n<li>After registering, a Zoom link will be sent<\/li>\r\n<\/ul>\r\n<p><strong>Participants must attend all three online meetings from 4 pm-6 pm<\/strong><\/p>\r\n<ul>\r\n<li>Thursday, February 15, 2024<\/li>\r\n<li>Thursday, March 14, 2024<\/li>\r\n<li>Thursday, April 4, 2024<\/li>\r\n<\/ul>\r\n<p>An effective school-based enterprise (SBE) provides students with the unique opportunity to develop and practice real-world industry experience while serving the needs of their campus and/or community! This course is designed to help participants successfully develop and manage a successful SBE.<\/p>\r\n<p>Participants will analyze the key components of SBEs and identify the differences between this model and other forms of work-based learning. Participants will also identify the key elements necessary for planning and implementing a school-based enterprise, including best practices and record-keeping requirements. Throughout this course, participants will develop a business plan for their proposed enterprise.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 434
+                            }
+                            , {
+                                title: 'School-Based Enterprises (Online Synchronous)',
+                                start: '2024-04-04T16:00:00',
+                                end: '2024-04-04T18:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p><strong>Participants must be in a program that can support an SBE. If you have questions, please contact <a href=\"mailto:PD@west-mec.org\" target=\"_blank\" rel=\"noopener\">PD@west-mec.org<\/a><\/strong><\/p>\r\n<ul>\r\n<li>Level 4 CTE Professional Development Class<\/li>\r\n<li>This class is designed for CTE teachers who create and implement a School-Based Enterprise<\/li>\r\n<li>Participants must create a business plan for a new School-Based Enterprise (SBE) or an in-depth analysis of a current SBE to earn ADE credit<\/li>\r\n<\/ul>\r\n<p><strong>This is a synchronous course that will have three online meetings&nbsp;<\/strong><\/p>\r\n<ul>\r\n<li>Participants are required to be on camera and have a functioning microphone for the duration of all three online session<\/li>\r\n<li>Participants must attend from a quiet, uninterrupted space<\/li>\r\n<li>This is an interactive class that will require your active participation<\/li>\r\n<li>After registering, a Zoom link will be sent<\/li>\r\n<\/ul>\r\n<p><strong>Participants must attend all three online meetings from 4 pm-6 pm<\/strong><\/p>\r\n<ul>\r\n<li>Thursday, February 15, 2024<\/li>\r\n<li>Thursday, March 14, 2024<\/li>\r\n<li>Thursday, April 4, 2024<\/li>\r\n<\/ul>\r\n<p>An effective school-based enterprise (SBE) provides students with the unique opportunity to develop and practice real-world industry experience while serving the needs of their campus and/or community! This course is designed to help participants successfully develop and manage a successful SBE.<\/p>\r\n<p>Participants will analyze the key components of SBEs and identify the differences between this model and other forms of work-based learning. Participants will also identify the key elements necessary for planning and implementing a school-based enterprise, including best practices and record-keeping requirements. Throughout this course, participants will develop a business plan for their proposed enterprise.<\/p>\r\n<p><strong>Upon successful completion of the course, which includes submission of homework, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 434
+                            }
+                            , {
+                                title: 'Scope & Sequence',
+                                start: '2024-06-12T08:00:00',
+                                end: '2024-06-12T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<p><strong>Before registering, please contact Professional Development at <a href=\"mailto:PD@west-mec.org\">PD@west-mec.org<\/a> or 623-738-0023 to confirm that this class meets your needs.<\/strong><\/p>\r\n<ul>\r\n<li>Level 4<\/li>\r\n<li>No prerequisite<\/li>\r\n<li><strong>This class is designed for all high school CTE teachers who <span style=\"text-decoration: underline;\">do not have<\/span> a scope &amp; sequence or <span style=\"text-decoration: underline;\">need to revise<\/span> their current scope &amp; sequence to meet ADE monitoring expectations<\/strong><\/li>\r\n<\/ul>\r\n<p>This class will give you an opportunity to look at the big picture of your program and design it in a way that makes sense. During this class, you will look at all the standards required to prepare your students to enter the field and begin by deciding the order you will teach each unit of instruction. You will also wrestle with the depth and breadth of instruction for each standard you&rsquo;ve been tasked with teaching. The final product? A scope and sequence that is custom-made by you for you!<\/p>\r\n<p><strong>Upon successful completion of the course, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 437
+                            }
+                            , {
+                                title: 'Foundations Of Online Instruction (Online, Synchronous)',
+                                start: '2024-03-13T08:00:00',
+                                end: '2024-03-13T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 3<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.&nbsp;<\/li>\r\n<\/ul>\r\n<p><strong>This is a synchronous online class that will consist of two full-day online meetings.<\/strong><\/p>\r\n<ul>\r\n<li>Participants are required to be on camera and have a functioning microphone for the duration of all three online session<\/li>\r\n<li>Participants must attend from a quiet, uninterrupted space<\/li>\r\n<li>This is an interactive class that will require your active participation<\/li>\r\n<li>After registering, a Zoom link will be sent<\/li>\r\n<\/ul>\r\n<p><strong>Participants must attend both online meetings from 8 am-4 pm<\/strong><\/p>\r\n<ul>\r\n<li>Wednesday, March 13, 2024<\/li>\r\n<li>Wednesday, March 27, 2024<\/li>\r\n<\/ul>\r\n<p>This two-day course (15 hours) will be taught virtually and will model how the Foundations of Online Instruction should be delivered to students. Participants will experience each section of the course as a student. At the end of each section, participants will be asked to design or modify a given lesson plan to reflect their learning for that section. The final assessment for participants will happen on day two. Each participant will teach the lesson plan they designed to their peers and will be evaluated by an instructor using the Online Instruction Checklist.<\/p>\r\n<p><strong>There is no homework for this class. Upon successful completion of BOTH Foundations Of Online Instruction classes, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 438
+                            }
+                            , {
+                                title: 'Foundations Of Online Instruction (Online, Synchronous)',
+                                start: '2024-03-27T08:00:00',
+                                end: '2024-03-27T16:00:00',
+                                // allDay: true,
+                                className: 'bgc-red text-white text-95 cursor-pointer',
+                                description: '<ul>\r\n<li>Level 3<\/li>\r\n<li>No prerequisite<\/li>\r\n<li>This class is designed for all CTE teachers.&nbsp;<\/li>\r\n<\/ul>\r\n<p><strong>This is a synchronous online class that will consist of two full-day online meetings.<\/strong><\/p>\r\n<ul>\r\n<li>Participants are required to be on camera and have a functioning microphone for the duration of all three online session<\/li>\r\n<li>Participants must attend from a quiet, uninterrupted space<\/li>\r\n<li>This is an interactive class that will require your active participation<\/li>\r\n<li>After registering, a Zoom link will be sent<\/li>\r\n<\/ul>\r\n<p><strong>Participants must attend both online meetings from 8 am-4 pm<\/strong><\/p>\r\n<ul>\r\n<li>Wednesday, March 13, 2024<\/li>\r\n<li>Wednesday, March 27, 2024<\/li>\r\n<\/ul>\r\n<p>This two-day course (15 hours) will be taught virtually and will model how the Foundations of Online Instruction should be delivered to students. Participants will experience each section of the course as a student. At the end of each section, participants will be asked to design or modify a given lesson plan to reflect their learning for that section. The final assessment for participants will happen on day two. Each participant will teach the lesson plan they designed to their peers and will be evaluated by an instructor using the Online Instruction Checklist.<\/p>\r\n<p><strong>There is no homework for this class. Upon successful completion of BOTH Foundations Of Online Instruction classes, participants will receive an ADE certificate for 15 professional development clock hours, which equates to one (1) semester hour of coursework.<\/strong><\/p>',
+                                event_id: 438
+                            }
+                        ],
+
+                        selectable: true,
+                        selectLongPressDelay: 200,
+
+                        editable: false,
+                        droppable: false,
+
+                        eventClick: function (info) {
+                            //display a modal
+                            var modal =
+                                '<div class="modal modal-lg fade">\
+                                  <div class="modal-dialog">\
+                                   <div class="modal-content">\
+                                    <div class="modal-header">\
+                                      <h5 class="modal-title">' + info.event.title + '</h5>\
+            <button type="button" class="close" data-dismiss="modal">&times;</button>\
+          </div>\
+          <div class="modal-body">\
+            <form action="" name="registerform" method="post" class="">\
+              <div id="view-course-wrapper_' + info.event.extendedProps.event_id + '">\
+                  <p>' + info.event.extendedProps.description + '</p>\
+                  <div class="col-12 text-right">\
+                    <button type="button" data-dismiss="modal" class="btn btn-sm btn-default btn-bold">Close</button>\
+                  </div>\
+              </div>\
+            </form>\
+          </div>\
+        </div>\
+       </div>\
+      </div>';
+
+
+                            var modal = $(modal).appendTo('body');
+
+                            $.ajax({
+                                type: "post",
+                                url: baseURL + "&ParentID=" + info.event.extendedProps.event_id,
+                                success: function (response) {
+                                    $("#view-course-wrapper_" + info.event.extendedProps.event_id).html(response);
+                                    reInit();
+                                }
+                            });
+
+
+                            // modal.find('form').on('submit', function(ev){
+                            //   ev.preventDefault();
+
+                            //   info.event.setProp('title' , $(this).find("input[type=text]").val());
+
+                            //   modal.modal("hide");
+                            // });
+                            // modal.find('button[data-action=delete]').on('click', function() {
+                            //   info.event.remove();
+                            //   modal.modal("hide");
+                            // });
+
+                            modal.modal('show').on('hidden.bs.modal', function () {
+                                modal.remove();
+                            });
+                        }
+
+                    });
+
+
+                    //
+                    calendar.render();
+
+
+                });
+            </script>
+
+            <footer class="footer">
+                <div class="footer-inner text-left bgc-blue">
+                    <!-- #section:basics/footer -->
+                    <div class="container container-plus">
+                        <div class="row pt-5 pb-3 border-none brc-grey-l2 text-white">
+                            <div class="col-12">
+                                <p>Contact</p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p>
+                                    -<br/>
+                                    Western Maricopa Education Center #402<br/>
+                                    Professional Development Department<br/>
+                                    5405 North 99th Avenue<br/>
+                                    Glendale, AZ 85305<br/>
+                                    623-738-0023<br/>
+                                    pd@west-mec.org
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <p>
+                                    Director of Professional Development and Strategic Planning<br/>
+                                    -<br/>
+                                    -<br/>
+                                    Joel Wakefield<br/>
+                                    623-738-0010<br/>
+                                    joel.wakefield@west-mec.org</p>
+                            </div>
+                        </div>
+
+                        <div class="row pb-5 border-none brc-grey-12 text-white">
+                            <div class="col-12">
+                                <p class="text-warning">
+                                    Copyright © 2022 All Rights Reserved
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /section:basics/footer -->
+                </div>
+            </footer>
+
+
+        </div>
+
+        <form name="tempform" id="tempform" method="post" action="#">
+            <input type="hidden" name="return_url" value="/html/courses/calendar">
+            <input type="hidden" name="submit_update_3" value="Save">
+            <div class="modal fade" id="temp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true" data-backdrop="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="temp-modal-title">Title</h4>
+                        </div>
+                        <div class="modal-body">
+                            Content
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary submit-button"
+                                    onclick=" document.tempform.submit();">Submit
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <script type="text/javascript" src="../../common/js/page_init.js"></script>
+        <script type="text/javascript" src="../../common/js/cfunctions.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+
+                if (successMessage.length !== 0)
+                    showMessages("success", successMessage);
+                if (infoMessage.length !== 0)
+                    showMessages("info", infoMessage);
+                if (errorMessage.length !== 0)
+                    showMessages("error", errorMessage);
+                if (warningMessage.length !== 0)
+                    showMessages("warning", warningMessage);
+
+                $('.logout-button').click(function () {
+                    $('#temp-modal #temp-modal-title').html("Logging out...");
+                    $('#temp-modal .modal-body').html("<h4>Goodbye,<br>See you soon!</h4>");
+                    $('#temp-modal .modal-footer').hide();
+                    $('#temp-modal').modal();
+                    $('.sexy-loader').hide();
+                });
+
+                var t = setTimeout(function () {
+                    $(".ui-pnotify-history-container").hide();
+                }, 100);
+
+                $("body").addClass('is-document-loaded');
+
+
+            });
+        </script>
+
+
+    </div><!-- /.main-container -->
+
+</div><!-- /.body-container -->
+
+</body>
+
+
+</html>
+         

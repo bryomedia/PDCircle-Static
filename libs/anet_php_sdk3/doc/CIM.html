@@ -1,0 +1,193 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>CIM.markdown</title>
+      </head>
+      <body>
+        <h1 id="cim-api">CIM API</h1>
+<h2 id="basic-overview">Basic Overview</h2>
+<p>The AuthorizeNetCIM class creates a request object for submitting transactions
+to the Authorize.Net CIM API.</p>
+<h2 id="creating-a-customer-profile">Creating a Customer Profile</h2>
+<p>To create a new cusomter profile, first create a new AuthorizeNetCustomer
+object.</p>
+<pre><code class="lang-PHP">$customerProfile = new AuthorizeNetCustomer;
+$customerProfile-&gt;description = &quot;Description of customer&quot;;
+$customerProfile-&gt;merchantCustomerId = 123;
+$customerProfile-&gt;email = &quot;user@domain.com&quot;;
+</code></pre>
+<p>You can then create an add payment profiles and addresses to this
+customer object.</p>
+<pre><code class="lang-PHP">// Add payment profile.
+$paymentProfile = new AuthorizeNetPaymentProfile;
+$paymentProfile-&gt;customerType = &quot;individual&quot;;
+$paymentProfile-&gt;payment-&gt;creditCard-&gt;cardNumber = &quot;4111111111111111&quot;;
+$paymentProfile-&gt;payment-&gt;creditCard-&gt;expirationDate = &quot;2015-10&quot;;
+$customerProfile-&gt;paymentProfiles[] = $paymentProfile;
+
+// Add another payment profile.
+$paymentProfile2 = new AuthorizeNetPaymentProfile;
+$paymentProfile2-&gt;customerType = &quot;business&quot;;
+$paymentProfile2-&gt;payment-&gt;bankAccount-&gt;accountType = &quot;businessChecking&quot;;
+$paymentProfile2-&gt;payment-&gt;bankAccount-&gt;routingNumber = &quot;121042882&quot;;
+$paymentProfile2-&gt;payment-&gt;bankAccount-&gt;accountNumber = &quot;123456789123&quot;;
+$paymentProfile2-&gt;payment-&gt;bankAccount-&gt;nameOnAccount = &quot;Jane Doe&quot;;
+$paymentProfile2-&gt;payment-&gt;bankAccount-&gt;echeckType = &quot;WEB&quot;;
+$paymentProfile2-&gt;payment-&gt;bankAccount-&gt;bankName = &quot;Pandora Bank&quot;;
+$customerProfile-&gt;paymentProfiles[] = $paymentProfile2;
+
+// Add shipping address.
+$address = new AuthorizeNetAddress;
+$address-&gt;firstName = &quot;john&quot;;
+$address-&gt;lastName = &quot;Doe&quot;;
+$address-&gt;company = &quot;John Doe Company&quot;;
+$address-&gt;address = &quot;1 Main Street&quot;;
+$address-&gt;city = &quot;Boston&quot;;
+$address-&gt;state = &quot;MA&quot;;
+$address-&gt;zip = &quot;02412&quot;;
+$address-&gt;country = &quot;USA&quot;;
+$address-&gt;phoneNumber = &quot;555-555-5555&quot;;
+$address-&gt;faxNumber = &quot;555-555-5556&quot;;
+$customerProfile-&gt;shipToList[] = $address;
+
+// Add another shipping address.
+$address2 = new AuthorizeNetAddress;
+$address2-&gt;firstName = &quot;jane&quot;;
+$address2-&gt;lastName = &quot;Doe&quot;;
+$address2-&gt;address = &quot;11 Main Street&quot;;
+$address2-&gt;city = &quot;Boston&quot;;
+$address2-&gt;state = &quot;MA&quot;;
+$address2-&gt;zip = &quot;02412&quot;;
+$address2-&gt;country = &quot;USA&quot;;
+$address2-&gt;phoneNumber = &quot;555-512-5555&quot;;
+$address2-&gt;faxNumber = &quot;555-523-5556&quot;;
+$customerProfile-&gt;shipToList[] = $address2;
+</code></pre>
+<p>Next, create an AuthorizeNetCIM object:</p>
+<pre><code class="lang-PHP">$request = new AuthorizeNetCIM;
+</code></pre>
+<p>Finally, call the createCustomerProfile method and pass in your
+customer object:</p>
+<pre><code class="lang-PHP">$response = $request-&gt;createCustomerProfile($customerProfile);
+</code></pre>
+<p>The response object provides some helper methods for easy access to the
+results of the transaction:</p>
+<pre><code class="lang-PHP">$new_customer_id = $response-&gt;getCustomerProfileId();
+</code></pre>
+<p>The response object also stores the XML response as a SimpleXml element
+which you can access like so:</p>
+<pre><code class="lang-PHP">$new_customer_id = $response-&gt;xml-&gt;customerProfileId
+</code></pre>
+<p>You can also run xpath queries against the result:</p>
+<pre><code class="lang-PHP">$array = $response-&gt;xpath(&#39;customerProfileId&#39;);
+$new_customer_id = $array[0];
+</code></pre>
+<h2 id="deleting-a-customer-profile">Deleting a Customer Profile</h2>
+<p>To delete a customer profile first create a new AuthorizeNetCIM object:</p>
+<pre><code class="lang-PHP">$request = new AuthorizeNetCIM;
+</code></pre>
+<p>Then call the deleteCustomerProfile method:</p>
+<pre><code class="lang-PHP">request-&gt;deleteCustomerProfile($customer_id);
+</code></pre>
+<h2 id="retrieving-a-customer-profile">Retrieving a Customer Profile</h2>
+<p>To retrieve a customer profile call the getCustomerProfile method:</p>
+<pre><code class="lang-PHP">$response = $request-&gt;getCustomerProfile($customerProfileId);
+</code></pre>
+<h2 id="validation-mode">Validation Mode</h2>
+<p>Validation mode allows you to generate a test transaction at the time you create a customer profile. In Test Mode, only field validation is performed. In Live Mode, a transaction is generated and submitted to the processor with the amount of $0.00 or $0.01. If successful, the transaction is immediately voided.</p>
+<p>To create a customer profile with Validation mode, simply pass in the
+a value for the validation mode parameter on the createCustomerProfile method:</p>
+<pre><code class="lang-PHP">$response = $request-&gt;createCustomerProfile($customerProfile, &quot;testMode&quot;);
+</code></pre>
+<p>You can access the validation response for each payment profile via xpath,
+the SimpleXML element or the getValidationResponses method:</p>
+<pre><code class="lang-PHP">$validationResponses = $response-&gt;getValidationResponses();
+  foreach ($validationResponses as $vr) {
+    echo $vr-&gt;approved;
+}
+</code></pre>
+<h2 id="updating-a-customer-profile">Updating a Customer Profile</h2>
+<p>Call the updateCustomerProfile method with the customerProfileId and customerProfile
+parameters:</p>
+<pre><code class="lang-PHP">$response = $request-&gt;updateCustomerProfile($customerProfileId, $customerProfile);
+</code></pre>
+<h2 id="adding-a-payment-profile">Adding a Payment Profile</h2>
+<pre><code class="lang-PHP">$paymentProfile = new AuthorizeNetPaymentProfile;
+$paymentProfile-&gt;customerType = &quot;individual&quot;;
+$paymentProfile-&gt;payment-&gt;creditCard-&gt;cardNumber = &quot;4111111111111111&quot;;
+$paymentProfile-&gt;payment-&gt;creditCard-&gt;expirationDate = &quot;2015-10&quot;;
+$response = $request-&gt;createCustomerPaymentProfile($customerProfileId, $paymentProfile);
+</code></pre>
+<h2 id="updating-a-payment-profile">Updating a Payment Profile</h2>
+<pre><code class="lang-PHP">$paymentProfile-&gt;payment-&gt;creditCard-&gt;cardNumber = &quot;4111111111111111&quot;;
+$paymentProfile-&gt;payment-&gt;creditCard-&gt;expirationDate = &quot;2017-11&quot;;
+$response = $request-&gt;updateCustomerPaymentProfile($customerProfileId,$paymentProfileId, $paymentProfile);
+</code></pre>
+<h2 id="adding-a-shipping-address">Adding a Shipping Address</h2>
+<pre><code class="lang-PHP">$address = new AuthorizeNetAddress;
+$address-&gt;firstName = &quot;john&quot;;
+$address-&gt;lastName = &quot;Doe&quot;;
+$address-&gt;company = &quot;John Doe Company&quot;;
+$address-&gt;address = &quot;1 Main Street&quot;;
+$address-&gt;city = &quot;Boston&quot;;
+$address-&gt;state = &quot;MA&quot;;
+$address-&gt;zip = &quot;02412&quot;;
+$address-&gt;country = &quot;USA&quot;;
+$address-&gt;phoneNumber = &quot;555-555-5555&quot;;
+$address-&gt;faxNumber = &quot;555-555-5556&quot;;
+$response = $request-&gt;createCustomerShippingAddress($customerProfileId, $address);
+$customerAddressId = $response-&gt;getCustomerAddressId();
+</code></pre>
+<h2 id="updating-a-shipping-address">Updating a Shipping Address</h2>
+<pre><code class="lang-PHP">// Update shipping address.
+$address-&gt;address = &quot;2 First Street&quot;;
+$response = $request-&gt;updateCustomerShippingAddress($customerProfileId, $customerAddressId, $address);
+</code></pre>
+<h2 id="creating-transactions">Creating Transactions</h2>
+<pre><code class="lang-PHP">// Create Auth &amp; Capture Transaction
+$transaction = new AuthorizeNetTransaction;
+$transaction-&gt;amount = &quot;9.79&quot;;
+$transaction-&gt;customerProfileId = $customerProfileId;
+$transaction-&gt;customerPaymentProfileId = $paymentProfileId;
+$transaction-&gt;customerShippingAddressId = $customerAddressId;
+
+$lineItem              = new AuthorizeNetLineItem;
+$lineItem-&gt;itemId      = &quot;4&quot;;
+$lineItem-&gt;name        = &quot;Cookies&quot;;
+$lineItem-&gt;description = &quot;Chocolate Chip&quot;;
+$lineItem-&gt;quantity    = &quot;4&quot;;
+$lineItem-&gt;unitPrice   = &quot;1.00&quot;;
+$lineItem-&gt;taxable     = &quot;true&quot;;
+
+$lineItem2             = new AuthorizeNetLineItem;
+$lineItem2-&gt;itemId     = &quot;4&quot;;
+$lineItem2-&gt;name       = &quot;Cookies&quot;;
+$lineItem2-&gt;description= &quot;Peanut Butter&quot;;
+$lineItem2-&gt;quantity   = &quot;4&quot;;
+$lineItem2-&gt;unitPrice  = &quot;1.00&quot;;
+$lineItem2-&gt;taxable    = &quot;true&quot;;
+
+$transaction-&gt;lineItems[] = $lineItem;
+$transaction-&gt;lineItems[] = $lineItem2;
+
+$response = $request-&gt;createCustomerProfileTransaction(&quot;AuthCapture&quot;, $transaction);
+$transactionResponse = $response-&gt;getTransactionResponse();
+$transactionId = $transactionResponse-&gt;transaction_id;
+</code></pre>
+<h2 id="voiding-a-transaction">Voiding a Transaction</h2>
+<pre><code class="lang-PHP">$transaction = new AuthorizeNetTransaction;
+$transaction-&gt;transId = $transactionId;
+$response = $request-&gt;createCustomerProfileTransaction(&quot;Void&quot;, $transaction);
+</code></pre>
+<h2 id="deleting-a-shipping-address">Deleting a Shipping Address</h2>
+<pre><code class="lang-PHP">$response = $request-&gt;deleteCustomerShippingAddress($customerProfileId, $customerAddressId);
+</code></pre>
+<h2 id="deleting-a-payment-profile">Deleting a Payment Profile</h2>
+<pre><code class="lang-PHP">$response = $request-&gt;deleteCustomerPaymentProfile($customerProfileId, $paymentProfileId);
+</code></pre>
+<h2 id="getting-customer-profile-ids">Getting Customer Profile IDs</h2>
+<pre><code class="lang-PHP">$response = $request-&gt;getCustomerProfileIds();
+</code></pre>
+
+      </body>
+    </html>

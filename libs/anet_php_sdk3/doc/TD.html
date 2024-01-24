@@ -1,0 +1,47 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>TD.markdown</title>
+      </head>
+      <body>
+        <h1 id="transaction-details-api">Transaction Details API</h1>
+<h2 id="basic-overview">Basic Overview</h2>
+<p>The AuthorizeNetTD class creates a request object for submitting requests
+to the Authorize.Net Transaction Details API.</p>
+<p>The AuthorizeNetTD class returns a response that uses PHP&#39;s bundled SimpleXML
+class for accessing it&#39;s members.</p>
+<p>The AuthorizeNetTD response provides two ways to access response elements:</p>
+<p>1.) A SimpleXml object:</p>
+<pre><code class="lang-PHP">$response-&gt;xml-&gt;transaction-&gt;payment-&gt;creditCard-&gt;cardType
+</code></pre>
+<p>2.) Xpath:</p>
+<pre><code class="lang-PHP">$batches = $response-&gt;xpath(&quot;batchList/batch&quot;);
+</code></pre>
+<p>3.) AuthorizeNet Objects (todo)</p>
+<h2 id="get-transaction-details">Get Transaction Details</h2>
+<pre><code class="lang-PHP">$request = new AuthorizeNetTD;
+$response = $request-&gt;getTransactionDetails($transId);
+echo &quot;Amount: {$response-&gt;xml-&gt;transaction-&gt;authAmount}&quot;;
+</code></pre>
+<h2 id="get-settled-batch-list">Get Settled Batch List</h2>
+<pre><code class="lang-PHP">$request = new AuthorizeNetTD;
+$response = $request-&gt;getSettledBatchList();
+$batches = $response-&gt;xpath(&quot;batchList/batch&quot;);
+echo &quot;Batch 1: {$batches[0]-&gt;batchId}&quot;;
+</code></pre>
+<h2 id="get-transaction-list">Get Transaction List</h2>
+<pre><code class="lang-PHP">$request = new AuthorizeNetTD;
+$response = $request-&gt;getTransactionList($batch_id);
+$transactions = $response-&gt;xpath(&quot;transactions/transaction&quot;)
+</code></pre>
+<p>There are two additional helper methods in the PHP SDK which
+will make multiple calls to retrieve a day&#39;s worth of 
+transactions or a month&#39;s worth of batches:</p>
+<pre><code class="lang-PHP">getTransactionsForDay($month, $day, $year = false)
+getSettledBatchListForMonth($month , $year)
+</code></pre>
+<p>If you don&#39;t pass parameters into these methods they will default
+to the current day/month.</p>
+
+      </body>
+    </html>

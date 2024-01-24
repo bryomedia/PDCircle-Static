@@ -1,0 +1,133 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>MIGRATING.md</title>
+      </head>
+      <body>
+        <h1 id="migrating-from-legacy-authorize-net-classes">Migrating from Legacy Authorize.Net Classes</h1>
+<p>Authorize.Net no longer supports several legacy classes, including AuthorizeNetAIM.php, AuthorizenetSIM.php, and others listed below, as part of PHP-SDK. If you are using any of these, we recommend that you update your code to use the new Authorize.Net API classes.</p>
+<p><strong>For details on the deprecation and replacement of legacy Authorize.Net APIs, visit <a href="https://developer.authorize.net/api/upgrade_guide/">https://developer.authorize.net/api/upgrade_guide/</a>.</strong></p>
+<h2 id="full-list-of-classes-that-are-no-longer-supported">Full list of classes that are no longer supported</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>New Feature</th>
+<th>Sample Codes directory/repository</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AuthorizeNetAIM.php</td>
+<td><a href="https://developer.authorize.net/api/reference/index.html#payment-transactions">PaymentTransactions</a></td>
+<td><a href="https://github.com/AuthorizeNet/sample-code-php/tree/master/PaymentTransactions">sample-code-php/PaymentTransactions</a></td>
+</tr>
+<tr>
+<td>AuthorizeNetARB.php</td>
+<td><a href="https://developer.authorize.net/api/reference/index.html#recurring-billing">RecurringBilling</a></td>
+<td><a href="https://github.com/AuthorizeNet/sample-code-php/tree/master/RecurringBilling">sample-code-php/RecurringBilling</a></td>
+</tr>
+<tr>
+<td>AuthorizeNetCIM.php</td>
+<td><a href="https://developer.authorize.net/api/reference/index.html#customer-profiles">CustomerProfiles</a></td>
+<td><a href="https://github.com/AuthorizeNet/sample-code-php/tree/master/CustomerProfiles">sample-code-php/CustomerProfiles</a></td>
+</tr>
+<tr>
+<td>Hosted CIM</td>
+<td><a href="https://developer.authorize.net/content/developer/en_us/api/reference/features/customer_profiles.html#Using_the_Accept_Customer_Hosted_Form">Accept Customer</a></td>
+<td>Not available</td>
+</tr>
+<tr>
+<td>AuthorizeNetCP.php</td>
+<td><a href="https://developer.authorize.net/api/reference/index.html#payment-transactions">PaymentTransactions</a></td>
+<td><a href="https://github.com/AuthorizeNet/sample-code-php/tree/master/PaymentTransactions">sample-code-php/PaymentTransactions</a></td>
+</tr>
+<tr>
+<td>AuthorizeNetDPM.php</td>
+<td><a href="https://developer.authorize.net/api/reference/features/acceptjs.html">Accept.JS</a></td>
+<td><a href="https://github.com/AuthorizeNet/accept-sample-app">Sample Accept Application</a></td>
+</tr>
+<tr>
+<td>AuthorizeNetSIM.php</td>
+<td><a href="https://developer.authorize.net/content/developer/en_us/api/reference/features/accept_hosted.html">Accept Hosted</a></td>
+<td>Not available</td>
+</tr>
+<tr>
+<td>AuthorizeNetSOAP.php</td>
+<td><a href="https://developer.authorize.net/api/reference/index.html#payment-transactions">PaymentTransactions</a></td>
+<td><a href="https://github.com/AuthorizeNet/sample-code-php/tree/master/PaymentTransactions">sample-code-php/PaymentTransactions</a></td>
+</tr>
+<tr>
+<td>AuthorizeNetTD.php</td>
+<td><a href="https://developer.authorize.net/api/reference/index.html#transaction-reporting">TransactionReporting</a></td>
+<td><a href="https://github.com/AuthorizeNet/sample-code-php/tree/master/TransactionReporting">sample-code-php/TransactionReporting/</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example</h2>
+<h4 id="old-authorizenetaim-example-">Old AuthorizeNetAIM example:</h4>
+<pre><code class="lang-php">define(&quot;AUTHORIZENET_API_LOGIN_ID&quot;, &quot;YOURLOGIN&quot;);
+define(&quot;AUTHORIZENET_TRANSACTION_KEY&quot;, &quot;YOURKEY&quot;);
+define(&quot;AUTHORIZENET_SANDBOX&quot;, true);
+$sale           = new AuthorizeNetAIM;
+$sale-&gt;amount   = &quot;5.99&quot;;
+$sale-&gt;card_num = &#39;6011000000000012&#39;;
+$sale-&gt;exp_date = &#39;04/15&#39;;
+$response = $sale-&gt;authorizeAndCapture();
+if ($response-&gt;approved) {
+    $transaction_id = $response-&gt;transaction_id;
+}
+</code></pre>
+<h4 id="corresponding-new-model-code-charge-credit-card-">Corresponding new model code (charge-credit-card):</h4>
+<pre><code class="lang-php">require &#39;vendor/autoload.php&#39;;
+use net\authorize\api\contract\v1 as AnetAPI;
+use net\authorize\api\controller as AnetController;
+
+define(&quot;AUTHORIZENET_LOG_FILE&quot;, &quot;phplog&quot;);
+$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+$merchantAuthentication-&gt;setName(&quot;YOURLOGIN&quot;);
+$merchantAuthentication-&gt;setTransactionKey(&quot;YOURKEY&quot;);
+// Create the payment data for a credit card
+$creditCard = new AnetAPI\CreditCardType();
+$creditCard-&gt;setCardNumber(&quot;6011000000000012&quot;);
+$creditCard-&gt;setExpirationDate(&quot;2015-04&quot;);
+$creditCard-&gt;setCardCode(&quot;123&quot;);
+
+// Add the payment data to a paymentType object
+$paymentOne = new AnetAPI\PaymentType();
+$paymentOne-&gt;setCreditCard($creditCard);
+
+$transactionRequestType = new AnetAPI\TransactionRequestType();
+$transactionRequestType-&gt;setTransactionType(&quot;authCaptureTransaction&quot;);
+$transactionRequestType-&gt;setAmount(&quot;5.99&quot;);
+$transactionRequestType-&gt;setPayment($paymentOne);
+
+// Assemble the complete transaction request
+$request = new AnetAPI\CreateTransactionRequest();
+$request-&gt;setMerchantAuthentication($merchantAuthentication);
+$request-&gt;setTransactionRequest($transactionRequestType);
+
+// Create the controller and get the response
+$controller = new AnetController\CreateTransactionController($request);
+$response = $controller-&gt;executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
+if ($response != null) {
+// Check to see if the API request was successfully received and acted upon
+if ($response-&gt;getMessages()-&gt;getResultCode() == &quot;Ok&quot;) {
+      // Since the API request was successful, look for a transaction response
+      // and parse it to display the results of authorizing the card
+      $tresponse = $response-&gt;getTransactionResponse();
+
+      if ($tresponse != null &amp;&amp; $tresponse-&gt;getMessages() != null) {
+      echo &quot; Successfully created transaction with Transaction ID: &quot; . $tresponse-&gt;getTransId() . &quot;\n&quot;;
+      echo &quot; Transaction Response Code: &quot; . $tresponse-&gt;getResponseCode() . &quot;\n&quot;;
+      echo &quot; Message Code: &quot; . $tresponse-&gt;getMessages()[0]-&gt;getCode() . &quot;\n&quot;;
+      echo &quot; Auth Code: &quot; . $tresponse-&gt;getAuthCode() . &quot;\n&quot;;
+      echo &quot; Description: &quot; . $tresponse-&gt;getMessages()[0]-&gt;getDescription() . &quot;\n&quot;;
+      }
+     }
+} 
+</code></pre>
+
+      </body>
+    </html>
